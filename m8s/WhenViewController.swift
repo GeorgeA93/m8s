@@ -19,7 +19,7 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
         whenCollectionView.dataSource = self
         whenCollectionView.delegate = self
         
-        let layout = whenCollectionView.collectionViewLayout as! WhenCollectionViewLayout
+        let layout = whenCollectionView.collectionViewLayout as! ImageCollectionViewLayout
         layout.prepareLayout()
        
         //uncoment for a nice image behind the collection view cells
@@ -61,34 +61,34 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WhenCell", forIndexPath: indexPath) as! WhenCollectionViewCell
 
         if(indexPath.row == 0){
-            cell.dayLabel!.text = "TODAY";
+            cell.label!.text = "TODAY";
              cell.imageView!.image = UIImage(named: "city7");
         } else if(indexPath.row == 1){
-            cell.dayLabel!.text = "TOMORROW";
+            cell.label!.text = "TOMORROW";
              cell.imageView!.image = UIImage(named: "city2");
             
         } else if(indexPath.row == 2){
-            cell.dayLabel!.text = "FRIDAY";
+            cell.label!.text = "FRIDAY";
              cell.imageView!.image = UIImage(named: "city3");
             
         }else if(indexPath.row == 3){
-            cell.dayLabel!.text = "SATURDAY";
+            cell.label!.text = "SATURDAY";
              cell.imageView!.image = UIImage(named: "city4");
             
         }else if(indexPath.row == 4){
-            cell.dayLabel!.text = "SUNDAY";
+            cell.label!.text = "SUNDAY";
              cell.imageView!.image = UIImage(named: "city5");
             
         }else if(indexPath.row == 5){
-            cell.dayLabel!.text = "MONDAY";
+            cell.label!.text = "MONDAY";
              cell.imageView!.image = UIImage(named: "city6");
             
         }else if(indexPath.row == 6){
-            cell.dayLabel!.text = "TUESDAY";
+            cell.label!.text = "TUESDAY";
              cell.imageView!.image = UIImage(named: "city3");
             
         } else {
-            cell.dayLabel!.text = "TODAY";
+            cell.label!.text = "TODAY";
              cell.imageView!.image = UIImage(named: "city");
             
         }
@@ -96,7 +96,7 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let layout = whenCollectionView.collectionViewLayout as! WhenCollectionViewLayout
+        let layout = whenCollectionView.collectionViewLayout as! ImageCollectionViewLayout
         let offset = layout.dragOffset * CGFloat(indexPath.item)
         if collectionView.contentOffset.y != offset {
             collectionView.setContentOffset(CGPoint(x: 0, y: offset), animated: true)

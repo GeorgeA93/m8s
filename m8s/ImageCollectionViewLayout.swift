@@ -9,14 +9,14 @@
 import UIKit
 
 
-struct WhenCollectionLayoutConstants {
+struct ImageCollectiotLayoutConstants {
     struct Cell {
         static let standardHeight: CGFloat = 200;
         static let featuredHeight: CGFloat = 300;
     }
 }
 
-class WhenCollectionViewLayout: UICollectionViewLayout {
+class ImageCollectionViewLayout: UICollectionViewLayout {
 
     //The amount the user needs to scroll before the featured cell changes
     let dragOffset: CGFloat = 280;
@@ -67,8 +67,8 @@ class WhenCollectionViewLayout: UICollectionViewLayout {
     override func prepareLayout() {
         cache.removeAll(keepCapacity: false)
         
-        let standardHeight = WhenCollectionLayoutConstants.Cell.standardHeight
-        let featuredHeight = WhenCollectionLayoutConstants.Cell.featuredHeight
+        let standardHeight = ImageCollectiotLayoutConstants.Cell.standardHeight
+        let featuredHeight = ImageCollectiotLayoutConstants.Cell.featuredHeight
         
         var frame = CGRectZero
         var y: CGFloat = 0

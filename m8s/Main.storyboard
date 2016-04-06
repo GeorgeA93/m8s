@@ -19,7 +19,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6I0-cB-cj1">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <collectionViewLayout key="collectionViewLayout" id="tFa-vv-tn8" customClass="WhenCollectionViewLayout" customModule="m8s" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="tFa-vv-tn8" customClass="ImageCollectionViewLayout" customModule="m8s" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WhenCell" id="DU7-cR-8FN" customClass="WhenCollectionViewCell" customModule="m8s" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="64" width="200" height="350"/>
@@ -98,9 +98,9 @@
                                         <size key="customSize" width="200" height="350"/>
                                         <connections>
                                             <outlet property="dayButton" destination="URe-U6-Hvk" id="oL4-Bn-Upd"/>
-                                            <outlet property="dayLabel" destination="lGG-37-ibj" id="ttY-Yw-TxH"/>
                                             <outlet property="imageCover" destination="52z-Co-GAf" id="3LY-L8-bbK"/>
                                             <outlet property="imageView" destination="DJR-8h-sdz" id="NrX-54-PzA"/>
+                                            <outlet property="label" destination="lGG-37-ibj" id="ujY-n4-SQ4"/>
                                             <outlet property="nightButton" destination="ZdM-ho-PWL" id="PYX-cq-Bu6"/>
                                         </connections>
                                     </collectionViewCell>
@@ -196,7 +196,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L0T-Yj-jPX" id="f3l-oU-0JG">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
