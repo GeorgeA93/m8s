@@ -8,14 +8,20 @@
 
 import UIKit
 
-
 class WhenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet private weak var whenCollectionView: UICollectionView!
     @IBOutlet private weak var revealButton: UIBarButtonItem!
+    var whatViewController: UIViewController!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let whatViewController = storyboard.instantiateViewControllerWithIdentifier("WhatViewController") as! WhatViewController
+        self.whatViewController = UINavigationController(rootViewController: whatViewController)
+        
         whenCollectionView.dataSource = self
         whenCollectionView.delegate = self
         
@@ -23,30 +29,25 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
         layout.prepareLayout()
        
         //uncoment for a nice image behind the collection view cells
-        //whenCollectionView.backgroundView = UIImageView(image: UIImage(named:"city2"));
-        
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        revealButton!.target = self.revealViewController()
-        revealButton!.action = #selector(SWRevealViewController.revealToggle(_:))
-        
-        navigationController!.navigationBar.backgroundColor = UIColor(red:48.0/255.0 ,green:131.0/255.0 ,blue:160.0/255.0, alpha:1.0)
-        navigationController!.navigationBar.barTintColor = UIColor(red:48.0/255.0 ,green:131.0/255.0 ,blue:160.0/255.0, alpha:1.0)
-        
-        if let user = Services.userService.currentUser {
-            print(user.fullName)
-        } else {
-           
-        }
-        
-        let loginButton = Services.userService.CreateFbLoginButton()
-        loginButton.center = self.view.center;
-        self.view.addSubview(loginButton);
+        //whenCollectionView.backgroundView = UIImageView(image: UIImage(named:"city2"))
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarItem("WHEN")
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func complete() {
+        self.slideMenuController()?.changeMainViewController(self.whatViewController, close: false)
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -59,7 +60,7 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WhenCell", forIndexPath: indexPath) as! WhenCollectionViewCell
-
+        cell.whenViewController = self;
         if(indexPath.row == 0){
             cell.label!.text = "TODAY";
              cell.imageView!.image = UIImage(named: "city7");
@@ -103,4 +104,6 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
 }
+
+
 

@@ -7,16 +7,41 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private func createMenuView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("SwipeViewController") as! SwipeViewController
+        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+
+        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+
+        UINavigationBar.appearance().tintColor = UIColor(hex: "689F38")
+
+        leftViewController.mainViewController = nvc
+
+        SlideMenuOptions.leftBezelWidth = 600
+        SlideMenuOptions.contentViewScale = 1
+        
+        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
+        slideMenuController.automaticallyAdjustsScrollViewInsets = true
+        slideMenuController.delegate = mainViewController
+        self.window?.rootViewController = slideMenuController
+        self.window?.makeKeyAndVisible()
+    }
+
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+
+        self.createMenuView()
+
         return true
     }
     

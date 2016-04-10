@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FBSDKLoginKit
 
 class LoginButton : NSObject, FBSDKLoginButtonDelegate {
     

@@ -12,6 +12,7 @@ class WhenCollectionViewCell: ImageCollectionViewCell {
     
     @IBOutlet private weak var dayButton: UIButton!
     @IBOutlet private weak var nightButton: UIButton!
+    var whenViewController: WhenViewController!
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
         super.applyLayoutAttributes(layoutAttributes)
@@ -30,8 +31,7 @@ class WhenCollectionViewCell: ImageCollectionViewCell {
     }
     
     @IBAction func dayTap(sender: AnyObject) {
-        print("day")
-
+        whenViewController.complete()
     }
 
     @IBAction func nightTap(sender: AnyObject) {
