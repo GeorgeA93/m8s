@@ -21,6 +21,11 @@ class SwipeViewController: UIViewController {
          //   self.performSegueWithIdentifier("ShowLogin", sender: self)
         } 
 
+        let loginButton = Services.userService.CreateFbLoginButton()
+        loginButton.center = self.view.center;
+        self.view.addSubview(loginButton);
+
+        
         if let user = Services.userService.currentUser {
             print(user.fullName)
         } else {

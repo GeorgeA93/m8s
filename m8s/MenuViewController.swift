@@ -21,6 +21,7 @@ protocol MenuProtocol : class {
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MenuProtocol {
 
+    @IBOutlet weak var menuHeaderView: MenuHeaderView!
     @IBOutlet weak var menuTableView: UITableView!
     var mainViewController: UIViewController!
     var preferencesViewController: UIViewController!
@@ -41,6 +42,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let aboutViewController = storyboard.instantiateViewControllerWithIdentifier("AboutViewController") as! AboutViewController
         self.aboutViewController = UINavigationController(rootViewController: aboutViewController)
 
+        self.menuHeaderView!.setup()
         
         self.menuTableView.delegate = self
         self.menuTableView.dataSource = self

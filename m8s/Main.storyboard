@@ -18,8 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-is-Cyd">
-                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
+                                <rect key="frame" x="0.0" y="88" width="600" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="512" id="Fva-43-hrr"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableViewCell" id="8xV-KK-9AB">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
@@ -31,16 +34,51 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGc-H4-C3j" customClass="MenuHeaderView" customModule="m8s" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0X-6s-wts">
+                                        <rect key="frame" x="80" y="24" width="512" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3I9-EN-CuP">
+                                        <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="BNo-Sx-4PC"/>
+                                            <constraint firstAttribute="width" constant="64" id="Zrn-Zr-XtY"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3I9-EN-CuP" secondAttribute="bottom" constant="8" id="0TV-TI-jy3"/>
+                                    <constraint firstItem="g0X-6s-wts" firstAttribute="trailing" secondItem="YGc-H4-C3j" secondAttribute="trailingMargin" id="Q53-nl-m03"/>
+                                    <constraint firstItem="3I9-EN-CuP" firstAttribute="leading" secondItem="YGc-H4-C3j" secondAttribute="leadingMargin" id="Wh5-Ej-AJP"/>
+                                    <constraint firstItem="3I9-EN-CuP" firstAttribute="centerY" secondItem="g0X-6s-wts" secondAttribute="centerY" id="bb5-Zg-fHs"/>
+                                    <constraint firstItem="g0X-6s-wts" firstAttribute="top" secondItem="YGc-H4-C3j" secondAttribute="top" constant="24" id="czs-lA-3Oc"/>
+                                    <constraint firstItem="g0X-6s-wts" firstAttribute="leading" secondItem="3I9-EN-CuP" secondAttribute="trailing" constant="8" symbolic="YES" id="eiP-Qe-or8"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="nameLabel" destination="g0X-6s-wts" id="W4J-1X-NjJ"/>
+                                    <outlet property="profilePictureView" destination="3I9-EN-CuP" id="84o-tw-Jlw"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wgJ-is-Cyd" firstAttribute="leading" secondItem="phr-lW-8Kq" secondAttribute="leading" id="BdC-0E-9zK"/>
-                            <constraint firstItem="wgJ-is-Cyd" firstAttribute="bottom" secondItem="hOu-mf-UvO" secondAttribute="top" id="MCL-Yz-6DX"/>
-                            <constraint firstAttribute="trailing" secondItem="wgJ-is-Cyd" secondAttribute="trailing" id="jcq-fY-rpd"/>
-                            <constraint firstItem="wgJ-is-Cyd" firstAttribute="top" secondItem="2YI-r5-YvS" secondAttribute="bottom" constant="80" id="nTC-0I-2If"/>
+                            <constraint firstAttribute="trailing" secondItem="YGc-H4-C3j" secondAttribute="trailing" id="1oF-jL-hFN"/>
+                            <constraint firstItem="YGc-H4-C3j" firstAttribute="leading" secondItem="phr-lW-8Kq" secondAttribute="leading" id="6Pm-K8-aVj"/>
+                            <constraint firstItem="YGc-H4-C3j" firstAttribute="leading" secondItem="wgJ-is-Cyd" secondAttribute="leading" id="a6Q-Nz-uaw"/>
+                            <constraint firstItem="wgJ-is-Cyd" firstAttribute="bottom" secondItem="hOu-mf-UvO" secondAttribute="top" id="cHe-gT-nBv"/>
+                            <constraint firstItem="wgJ-is-Cyd" firstAttribute="top" secondItem="YGc-H4-C3j" secondAttribute="bottom" constant="8" symbolic="YES" id="fyG-CD-MTR"/>
+                            <constraint firstItem="YGc-H4-C3j" firstAttribute="top" secondItem="phr-lW-8Kq" secondAttribute="top" id="nxF-xO-Nwa"/>
+                            <constraint firstItem="YGc-H4-C3j" firstAttribute="trailing" secondItem="wgJ-is-Cyd" secondAttribute="trailing" id="sOf-df-wS5"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="menuHeaderView" destination="YGc-H4-C3j" id="TeD-E7-MZH"/>
                         <outlet property="menuTableView" destination="wgJ-is-Cyd" id="XUd-1I-bDz"/>
                     </connections>
                 </viewController>
