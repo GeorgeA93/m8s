@@ -407,7 +407,7 @@
         <!--Invite Friends View Controller-->
         <scene sceneID="8uT-c7-uVQ">
             <objects>
-                <viewController storyboardIdentifier="InviteFriendsViewController" id="EjR-RC-4wH" customClass="InviteFriendsViewController" customModule="m8s" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InviteFriendsViewController" automaticallyAdjustsScrollViewInsets="NO" id="EjR-RC-4wH" customClass="InviteFriendsViewController" customModule="m8s" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j3o-Nq-8C1"/>
                         <viewControllerLayoutGuide type="bottom" id="HhA-OM-LCW"/>
@@ -415,12 +415,46 @@
                     <view key="view" contentMode="scaleToFill" id="0BY-I8-P5H">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z7f-QY-DJq">
+                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InviteFriendTableViewCell" id="NHE-BT-dVU">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NHE-BT-dVU" id="ioL-Jt-btU">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z7f-QY-DJq" firstAttribute="top" secondItem="j3o-Nq-8C1" secondAttribute="bottom" constant="8" symbolic="YES" id="QOE-gN-jLy"/>
+                            <constraint firstItem="z7f-QY-DJq" firstAttribute="leading" secondItem="0BY-I8-P5H" secondAttribute="leading" id="VFO-M3-5te"/>
+                            <constraint firstAttribute="trailing" secondItem="z7f-QY-DJq" secondAttribute="trailing" id="bim-wf-GGC"/>
+                            <constraint firstItem="z7f-QY-DJq" firstAttribute="bottom" secondItem="HhA-OM-LCW" secondAttribute="top" id="zUo-wd-gwT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="inviteFriendsTableView" destination="z7f-QY-DJq" id="FWb-V4-Cb1"/>
+                        <outlet property="searchDisplayController" destination="juB-Xf-ect" id="1gZ-TG-JhW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3Z-VH-674" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="juB-Xf-ect">
+                    <connections>
+                        <outlet property="delegate" destination="EjR-RC-4wH" id="N6C-KW-DP0"/>
+                        <outlet property="searchContentsController" destination="EjR-RC-4wH" id="k0t-Yg-bjN"/>
+                        <outlet property="searchResultsDataSource" destination="EjR-RC-4wH" id="riJ-S6-tod"/>
+                        <outlet property="searchResultsDelegate" destination="EjR-RC-4wH" id="3mb-j9-7TR"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3754" y="405"/>
+            <point key="canvasLocation" x="3827" y="405"/>
         </scene>
     </scenes>
 </document>

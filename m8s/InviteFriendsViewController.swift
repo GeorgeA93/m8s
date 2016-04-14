@@ -8,12 +8,30 @@
 
 import UIKit
 
-class InviteFriendsViewController: UIViewController {
-
+class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var inviteFriendsTableView: UITableView!
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var friends = ["Friend One", "Friend Two", "Friend Three", "Friend Four", "Friend Five", "Friend Six",
+                   "Friend Seven", "Friend Eight", "Friend Nine", "Friend Ten", "Friend Eleven", "Friend Twelve",
+                   "Friend Thirteen", "Friend Fourteen", "Friend Fifthteen", "Friend Sixteen", "Friend Seventeen",
+                   "Friend Eighteen", "Friend Nineteen", "Friend Twenty"];
+    var filteredFriends = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //table view setup
+        inviteFriendsTableView.delegate = self
+        inviteFriendsTableView.dataSource = self
+        
+        //seach bar setup
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        inviteFriendsTableView.tableHeaderView = searchController.searchBar
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -30,6 +48,45 @@ class InviteFriendsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Table View
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.active && searchController.searchBar.text != "" {
+            return filteredFriends.count
+        }
+        return friends.count
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("InviteFriendTableViewCell", forIndexPath: indexPath)
+        
+        if searchController.active && searchController.searchBar.text != "" {
+            cell.textLabel!.text = filteredFriends[indexPath.row]
+        } else {
+            cell.textLabel!.text = friends[indexPath.row]
+        }
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    // MARK: - Search Controller
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredFriends = friends.filter { friend in
+            return friend.lowercaseString.containsString(searchText.lowercaseString)
+        }
+        
+        inviteFriendsTableView.reloadData()
+    }
 
     /*
     // MARK: - Navigation
@@ -40,5 +97,10 @@ class InviteFriendsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+extension InviteFriendsViewController: UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
 }
