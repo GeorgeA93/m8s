@@ -206,7 +206,7 @@
         <!--Settings View Controller-->
         <scene sceneID="U7R-VM-4DA">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="0xC-gJ-UjI" customClass="SettingsViewController" customModule="m8s" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" automaticallyAdjustsScrollViewInsets="NO" id="0xC-gJ-UjI" customClass="SettingsViewController" customModule="m8s" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xbb-5s-bUD"/>
                         <viewControllerLayoutGuide type="bottom" id="vF2-qR-Rj5"/>
@@ -216,7 +216,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O3I-fc-MkM">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsTableViewCell" id="CId-no-eW1">
@@ -235,7 +235,7 @@
                             <constraint firstItem="O3I-fc-MkM" firstAttribute="leading" secondItem="uNf-aI-7hr" secondAttribute="leading" id="BCN-SG-ot8"/>
                             <constraint firstAttribute="trailing" secondItem="O3I-fc-MkM" secondAttribute="trailing" id="KM0-om-YNW"/>
                             <constraint firstItem="O3I-fc-MkM" firstAttribute="bottom" secondItem="vF2-qR-Rj5" secondAttribute="top" id="Q6s-XZ-rKJ"/>
-                            <constraint firstItem="O3I-fc-MkM" firstAttribute="top" secondItem="Xbb-5s-bUD" secondAttribute="bottom" constant="-20" id="xmR-JP-j71"/>
+                            <constraint firstItem="O3I-fc-MkM" firstAttribute="top" secondItem="Xbb-5s-bUD" secondAttribute="bottom" id="xmR-JP-j71"/>
                         </constraints>
                     </view>
                     <connections>
