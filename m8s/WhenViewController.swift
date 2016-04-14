@@ -46,6 +46,7 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Dispose of any resources that can be recreated.
     }
 
+    //Will need to take an option here. (Day/Night)
     func complete() {
         self.slideMenuController()?.changeMainViewController(self.whatViewController, close: false)
     }

@@ -11,9 +11,15 @@ import UIKit
 class WhatViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var whatCollectionView: UICollectionView!
+    var whereViewController: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let whereViewController = storyboard.instantiateViewControllerWithIdentifier("WhereViewController") as! WhereViewController
+        self.whereViewController = UINavigationController(rootViewController: whereViewController)
+        
         whatCollectionView.dataSource = self
         whatCollectionView.delegate = self
 
@@ -36,6 +42,11 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Dispose of any resources that can be recreated.
     }
     
+    //Will need to take an option here. (Anything/Drinks etc)
+    func complete() {
+        self.slideMenuController()?.changeMainViewController(self.whereViewController, close: false)
+    }
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1;
     }
@@ -45,8 +56,8 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WhatCell", forIndexPath: indexPath) as! ImageCollectionViewCell
-
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WhatCell", forIndexPath: indexPath) as! WhatCollectionViewCell
+        cell.whatViewController = self
         if(indexPath.row == 0){
             cell.label!.text = "ANYTHING";
             cell.imageView!.image = UIImage(named: "city7");
@@ -58,9 +69,9 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.label!.text = "CLUBBING";
             cell.imageView!.image = UIImage(named: "city3");
             
-        } else if(indexPath.row == 2){
+        } else if(indexPath.row == 3){
             cell.label!.text = "CINEMA";
-            cell.imageView!.image = UIImage(named: "city4");
+            cell.imageView!.image = UIImage(named: "city5");
             
         }
         

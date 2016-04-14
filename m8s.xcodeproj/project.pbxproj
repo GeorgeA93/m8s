@@ -11,6 +11,7 @@
 		B90D90781CB2EBD000A4BC60 /* When.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90D90771CB2EBD000A4BC60 /* When.swift */; };
 		B90D907A1CB2EBDD00A4BC60 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90D90791CB2EBDD00A4BC60 /* Entity.swift */; };
 		B90D907C1CB2EEDD00A4BC60 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90D907B1CB2EEDD00A4BC60 /* Preference.swift */; };
+		B94F35411CC039490049DEA6 /* WhatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F35401CC039490049DEA6 /* WhatCollectionViewCell.swift */; };
 		B969D1C11CB5854F00A4ABD6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B969D1C01CB5854F00A4ABD6 /* .gitignore */; };
 		B969D1FC1CB597C400A4ABD6 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969D1FB1CB597C400A4ABD6 /* ImageCollectionViewCell.swift */; };
 		B969D1FE1CB599D500A4ABD6 /* WhatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969D1FD1CB599D500A4ABD6 /* WhatViewController.swift */; };
@@ -65,6 +66,7 @@
 		B90D90771CB2EBD000A4BC60 /* When.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = When.swift; sourceTree = "<group>"; };
 		B90D90791CB2EBDD00A4BC60 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		B90D907B1CB2EEDD00A4BC60 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		B94F35401CC039490049DEA6 /* WhatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatCollectionViewCell.swift; sourceTree = "<group>"; };
 		B969D1C01CB5854F00A4ABD6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B969D1FB1CB597C400A4ABD6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B969D1FD1CB599D500A4ABD6 /* WhatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			children = (
 				B972E1501CAC50B30004F3DC /* WhenCollectionViewCell.swift */,
 				B969D1FB1CB597C400A4ABD6 /* ImageCollectionViewCell.swift */,
+				B94F35401CC039490049DEA6 /* WhatCollectionViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				B972E1531CAC50B30004F3DC /* WhenCollectionViewCell.swift in Sources */,
 				B9DEFECA1CAE533E0068A356 /* Services.swift in Sources */,
 				B972E1231CAC50630004F3DC /* AppDelegate.swift in Sources */,
+				B94F35411CC039490049DEA6 /* WhatCollectionViewCell.swift in Sources */,
 				B977BC201CBAD44200263F23 /* WhereViewController.swift in Sources */,
 				B977BC141CBAA51100263F23 /* StringExtensions.swift in Sources */,
 			);

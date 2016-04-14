@@ -35,6 +35,6 @@ class WhenCollectionViewCell: ImageCollectionViewCell {
     }
 
     @IBAction func nightTap(sender: AnyObject) {
-       print("night")
+        whenViewController.complete()
     }
 }
