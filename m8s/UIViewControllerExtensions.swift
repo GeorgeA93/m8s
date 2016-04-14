@@ -12,8 +12,8 @@ import SlideMenuControllerSwift
 extension UIViewController {
     
     func setNavigationBarItem(title: String?) {
-        //self.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
-       // self.addRightBarButtonWithImage(UIImage(named: "ic_notifications_black_24dp")!)
+        self.addLeftBarButtonWithImage(UIImage(named: "hamburgerMenu")!)
+      //  self.addRightBarButtonWithImage(UIImage(named: "plansIcon")!)
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.removeRightGestures()
         self.slideMenuController()?.addLeftGestures()

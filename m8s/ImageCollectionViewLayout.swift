@@ -11,15 +11,15 @@ import UIKit
 
 struct ImageCollectiotLayoutConstants {
     struct Cell {
-        static let standardHeight: CGFloat = 200;
-        static let featuredHeight: CGFloat = 300;
+        static let standardHeight: CGFloat = 100;
+        static let featuredHeight: CGFloat = 280;
     }
 }
 
 class ImageCollectionViewLayout: UICollectionViewLayout {
 
     //The amount the user needs to scroll before the featured cell changes
-    let dragOffset: CGFloat = 280;
+    let dragOffset: CGFloat = 180;
     
     var cache = [UICollectionViewLayoutAttributes]();
     
@@ -66,6 +66,10 @@ class ImageCollectionViewLayout: UICollectionViewLayout {
     
     override func prepareLayout() {
         cache.removeAll(keepCapacity: false)
+        
+        if(collectionView!.contentOffset.y < 0){
+            collectionView!.contentOffset.y = 0
+        }
         
         let standardHeight = ImageCollectiotLayoutConstants.Cell.standardHeight
         let featuredHeight = ImageCollectiotLayoutConstants.Cell.featuredHeight

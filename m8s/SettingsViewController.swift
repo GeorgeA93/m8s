@@ -8,11 +8,16 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var settingsTableView: UITableView!
+     var menus = ["Delete Account", "Setting Two", "Setting Three", "Setting Four"];
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        settingsTableView.delegate = self
+        settingsTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -29,6 +34,28 @@ class SettingsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menus.count
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("SettingsTableViewCell", forIndexPath: indexPath)
+        
+        cell.textLabel!.text = menus[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       
+    }
+
     
 
     /*
