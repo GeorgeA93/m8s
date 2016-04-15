@@ -25,6 +25,9 @@ xcuserdata/
 # Packages/
 .build/
 
+# AppCode
+.idea
+
 # CocoaPods
  Pods/
 
