@@ -9,10 +9,10 @@
 import UIKit
 
 
-struct ImageCollectiotLayoutConstants {
+struct ImageCollectionLayoutConstants {
     struct Cell {
         static let standardHeight: CGFloat = 100;
-        static let featuredHeight: CGFloat = 280;
+        static let featuredHeight: CGFloat = 400;
     }
 }
 
@@ -71,8 +71,8 @@ class ImageCollectionViewLayout: UICollectionViewLayout {
             collectionView!.contentOffset.y = 0
         }
         
-        let standardHeight = ImageCollectiotLayoutConstants.Cell.standardHeight
-        let featuredHeight = ImageCollectiotLayoutConstants.Cell.featuredHeight
+        let standardHeight = ImageCollectionLayoutConstants.Cell.standardHeight
+        let featuredHeight = ImageCollectionLayoutConstants.Cell.featuredHeight
         
         var frame = CGRectZero
         var y: CGFloat = 0
@@ -80,6 +80,7 @@ class ImageCollectionViewLayout: UICollectionViewLayout {
         for item in 0..<numberOfItems {
             let indexPath = NSIndexPath(forItem: item, inSection: 0)
             let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+            
             //Important because each cell has to slide over the top of the previous one
             attributes.zIndex = item
             //Initially set the height of the cell to the standard height

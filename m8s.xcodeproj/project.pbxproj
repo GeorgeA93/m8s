@@ -13,6 +13,7 @@
 		B90D907C1CB2EEDD00A4BC60 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90D907B1CB2EEDD00A4BC60 /* Preference.swift */; };
 		B94F35411CC039490049DEA6 /* WhatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F35401CC039490049DEA6 /* WhatCollectionViewCell.swift */; };
 		B967FEA81CC3E43800C49707 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B967FEA71CC3E43800C49707 /* LocationSearchTableViewController.swift */; };
+		B967FEAA1CC401EA00C49707 /* WhereCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B967FEA91CC401EA00C49707 /* WhereCollectionViewCell.swift */; };
 		B969D1C11CB5854F00A4ABD6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B969D1C01CB5854F00A4ABD6 /* .gitignore */; };
 		B969D1FC1CB597C400A4ABD6 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969D1FB1CB597C400A4ABD6 /* ImageCollectionViewCell.swift */; };
 		B969D1FE1CB599D500A4ABD6 /* WhatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969D1FD1CB599D500A4ABD6 /* WhatViewController.swift */; };
@@ -69,6 +70,7 @@
 		B90D907B1CB2EEDD00A4BC60 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		B94F35401CC039490049DEA6 /* WhatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatCollectionViewCell.swift; sourceTree = "<group>"; };
 		B967FEA71CC3E43800C49707 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
+		B967FEA91CC401EA00C49707 /* WhereCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereCollectionViewCell.swift; sourceTree = "<group>"; };
 		B969D1C01CB5854F00A4ABD6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B969D1FB1CB597C400A4ABD6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B969D1FD1CB599D500A4ABD6 /* WhatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				B972E1501CAC50B30004F3DC /* WhenCollectionViewCell.swift */,
 				B969D1FB1CB597C400A4ABD6 /* ImageCollectionViewCell.swift */,
 				B94F35401CC039490049DEA6 /* WhatCollectionViewCell.swift */,
+				B967FEA91CC401EA00C49707 /* WhereCollectionViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				B977BC1A1CBAD05F00263F23 /* SettingsViewController.swift in Sources */,
 				B977BC101CBAA4BD00263F23 /* UIApplicationExtensions.swift in Sources */,
 				B977BC221CBAD4AA00263F23 /* InviteFriendsViewController.swift in Sources */,
+				B967FEAA1CC401EA00C49707 /* WhereCollectionViewCell.swift in Sources */,
 				B90D907C1CB2EEDD00A4BC60 /* Preference.swift in Sources */,
 				B972E1541CAC50B30004F3DC /* ImageCollectionViewLayout.swift in Sources */,
 				B977BC181CBAB0CD00263F23 /* ExSlideMenuController.swift in Sources */,

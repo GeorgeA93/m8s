@@ -16,7 +16,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     var delta: CGFloat {
         get {
-            return 1 - ((ImageCollectiotLayoutConstants.Cell.featuredHeight - CGRectGetHeight(frame)) / (ImageCollectiotLayoutConstants.Cell.featuredHeight - ImageCollectiotLayoutConstants.Cell.standardHeight)) //delta is one when the cell is featured.
+            return 1 - ((ImageCollectionLayoutConstants.Cell.featuredHeight - CGRectGetHeight(frame)) / (ImageCollectionLayoutConstants.Cell.featuredHeight - ImageCollectionLayoutConstants.Cell.standardHeight)) //delta is one when the cell is featured.
         }
     }
  
