@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         leftViewController.mainViewController = nvc
 
-        SlideMenuOptions.leftBezelWidth = 600
+        SlideMenuOptions.leftBezelWidth = 60
         SlideMenuOptions.contentViewScale = 1
         
         let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
-       // self.createMenuView()
+        self.createMenuView()
 
         return true
     }

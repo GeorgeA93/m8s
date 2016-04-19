@@ -13,12 +13,7 @@ import MapKit
 class WhereViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var whereCollectionView: UICollectionView!
-    let regionRadius: CLLocationDistance = 2000
-    var mapView = MKMapView()
-    var locationManager = CLLocationManager()
-    var resultSearchController:UISearchController? = nil
-    var selectedPin:MKPlacemark? = nil
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,9 +23,6 @@ class WhereViewController: UIViewController, UICollectionViewDelegate, UICollect
         let layout = whereCollectionView.collectionViewLayout as! ImageCollectionViewLayout
         layout.prepareLayout()
         
-      //  locationManager.desiredAccuracy = kCLLocationAccuracyBest
-       // locationManager.requestWhenInUseAuthorization()
-       // locationManager.requestLocation()
         checkLocationAuthorizationStatus()
     }
 
@@ -86,10 +78,7 @@ class WhereViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     // MARK: - location manager
     func checkLocationAuthorizationStatus() {
-        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
-            mapView.showsUserLocation = true
-        } else {
-            locationManager.requestWhenInUseAuthorization()
-        }
+        let locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
     }
 }
