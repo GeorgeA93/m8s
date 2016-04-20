@@ -102,6 +102,7 @@ class ImageCollectionViewLayout: UICollectionViewLayout {
             cache.append(attributes)
             y = CGRectGetMaxY(frame)
         }
+        print(featuredItemIndex)
     }
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()

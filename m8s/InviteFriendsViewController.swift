@@ -11,8 +11,9 @@ import UIKit
 class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var inviteFriendsTableView: UITableView!
-    
-    let searchController = UISearchController(searchResultsController: nil)
+    var searchController: UISearchController!
+    var doneButton: UIBarButtonItem!
+    var swipeViewController: UIViewController!
     
     var friends = ["Friend One", "Friend Two", "Friend Three", "Friend Four", "Friend Five", "Friend Six",
                    "Friend Seven", "Friend Eight", "Friend Nine", "Friend Ten", "Friend Eleven", "Friend Twelve",
@@ -23,11 +24,20 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let swipeViewController = storyboard.instantiateViewControllerWithIdentifier("SwipeViewController") as! SwipeViewController
+        self.swipeViewController = UINavigationController(rootViewController: swipeViewController)
+        
         //table view setup
         inviteFriendsTableView.delegate = self
         inviteFriendsTableView.dataSource = self
         
+        //nav bar button setup
+        doneButton = UIBarButtonItem(title: "SKIP", style: UIBarButtonItemStyle.Done, target: self, action: #selector(InviteFriendsViewController.doneTapped))
+        navigationItem.rightBarButtonItem = doneButton
+        
         //seach bar setup
+        searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -36,7 +46,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarItem("INVITE")
+        self.title = "INVITE"
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -75,7 +85,23 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        let cell = inviteFriendsTableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        updateDoneButton()
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = inviteFriendsTableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.None
+        updateDoneButton()
+    }
+    
+    func updateDoneButton() {
+        if let _ = inviteFriendsTableView.indexPathsForSelectedRows {
+            doneButton.title = "DONE"
+        } else {
+            doneButton.title = "SKIP"
+        }
     }
     
     // MARK: - Search Controller
@@ -87,7 +113,15 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         inviteFriendsTableView.reloadData()
     }
-
+    
+    func doneTapped() {
+        print("done")
+        self.slideMenuController()?.changeMainViewController(self.swipeViewController, close: true)
+        let viewControllers = self.navigationController?.viewControllers
+        let filteredViewControllers = viewControllers?.filter({$0.isKindOfClass(WhenViewController)})
+        self.navigationController?.viewControllers = filteredViewControllers!
+    }
+    
     /*
     // MARK: - Navigation
 

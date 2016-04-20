@@ -12,22 +12,16 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     @IBOutlet private weak var whenCollectionView: UICollectionView!
     @IBOutlet private weak var revealButton: UIBarButtonItem!
-    var whatViewController: UIViewController!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let whatViewController = storyboard.instantiateViewControllerWithIdentifier("WhatViewController") as! WhatViewController
-        self.whatViewController = UINavigationController(rootViewController: whatViewController)
-
         whenCollectionView.dataSource = self
         whenCollectionView.delegate = self
-
+        
         let layout = whenCollectionView.collectionViewLayout as! ImageCollectionViewLayout
         layout.prepareLayout()
-
+        
         //uncoment for a nice image behind the collection view cells
         //whenCollectionView.backgroundView = UIImageView(image: UIImage(named:"city2"))
     }
@@ -35,6 +29,11 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem("WHEN")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        whenCollectionView.setContentOffset(CGPointZero, animated: true)
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -44,11 +43,6 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    //Will need to take an option here. (Day/Night)
-    func complete() {
-        self.slideMenuController()?.changeMainViewController(self.whatViewController, close: false)
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -61,7 +55,6 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WhenCell", forIndexPath: indexPath) as! WhenCollectionViewCell
-        cell.whenViewController = self;
         if (indexPath.row == 0) {
             cell.label!.text = "TODAY";
             cell.imageView!.image = UIImage(named: "city7");
@@ -104,6 +97,20 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
             collectionView.setContentOffset(CGPoint(x: 0, y: offset), animated: true)
         }
     }
+    
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "dayTapped") {
+            //add day to preferences
+            print("day")
+        } else if(segue.identifier == "nightTapped") {
+            //add night to preferences
+            print("night")
+        }
+     }
 }
 
 

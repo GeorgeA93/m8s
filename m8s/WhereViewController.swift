@@ -20,15 +20,16 @@ class WhereViewController: UIViewController, UICollectionViewDelegate, UICollect
         whereCollectionView.dataSource = self
         whereCollectionView.delegate = self
         
+        let doneButton = UIBarButtonItem(title: "INVITE", style: UIBarButtonItemStyle.Done, target: self, action: #selector(WhereViewController.doneTapped))
+        navigationItem.rightBarButtonItem = doneButton
+        
         let layout = whereCollectionView.collectionViewLayout as! ImageCollectionViewLayout
         layout.prepareLayout()
-        
-        checkLocationAuthorizationStatus()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarItem("WHERE")
+        self.title = "WHERE"
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -37,7 +38,6 @@ class WhereViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        checkLocationAuthorizationStatus()
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,9 +76,10 @@ class WhereViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    // MARK: - location manager
-    func checkLocationAuthorizationStatus() {
-        let locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
+    func doneTapped() {
+        print("done")
+        let layout = whereCollectionView.collectionViewLayout as! ImageCollectionViewLayout //layout.featuredItemIndex is the currently selected cell so we will need that here
+        print(layout.featuredItemIndex)
+        self.performSegueWithIdentifier("doneTapped", sender: self)
     }
 }

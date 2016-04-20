@@ -11,17 +11,14 @@ import UIKit
 class WhatViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var whatCollectionView: UICollectionView!
-    var whereViewController: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let whereViewController = storyboard.instantiateViewControllerWithIdentifier("WhereViewController") as! WhereViewController
-        self.whereViewController = UINavigationController(rootViewController: whereViewController)
-        
         whatCollectionView.dataSource = self
         whatCollectionView.delegate = self
+        let doneButton = UIBarButtonItem(title: "WHERE", style: UIBarButtonItemStyle.Done, target: self, action: #selector(WhatViewController.doneTapped))
+        navigationItem.rightBarButtonItem = doneButton
 
         let layout = whatCollectionView.collectionViewLayout as! ImageCollectionViewLayout
         layout.prepareLayout()
@@ -30,7 +27,7 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarItem("WHAT")
+        self.title = "WHAT"
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -40,11 +37,6 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    //Will need to take an option here. (Anything/Drinks etc)
-    func complete() {
-        self.slideMenuController()?.changeMainViewController(self.whereViewController, close: false)
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -57,7 +49,6 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WhatCell", forIndexPath: indexPath) as! WhatCollectionViewCell
-        cell.whatViewController = self
         if(indexPath.row == 0){
             cell.label!.text = "ANYTHING";
             cell.imageView!.image = UIImage(named: "city7");
@@ -72,7 +63,6 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
         } else if(indexPath.row == 3){
             cell.label!.text = "CINEMA";
             cell.imageView!.image = UIImage(named: "city5");
-            
         }
         
         return cell
@@ -85,7 +75,13 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
             collectionView.setContentOffset(CGPoint(x: 0, y: offset), animated: true)
         }
     }
-
+    
+    func doneTapped() {
+        print("done")
+        let layout = whatCollectionView.collectionViewLayout as! ImageCollectionViewLayout //layout.featuredItemIndex is the currently selected cell so we will need that here
+        print(layout.featuredItemIndex)
+        self.performSegueWithIdentifier("doneTapped", sender: self)
+    }
     
 
     /*

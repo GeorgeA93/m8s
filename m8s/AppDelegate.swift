@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
 
+        UINavigationBar.appearance().tintColor = UIColor(hex: "FFFEF2")
+        UINavigationBar.appearance().backgroundColor = UIColor(hex: "0A0609")
+        UINavigationBar.appearance().barTintColor = UIColor(hex: "0A0609")
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(hex: "FFFEF2")]
+        
         leftViewController.mainViewController = nvc
 
         SlideMenuOptions.leftBezelWidth = 60

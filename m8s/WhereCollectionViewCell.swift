@@ -22,14 +22,9 @@ class WhereCollectionViewCell: ImageCollectionViewCell {
     var resultSearchController:UISearchController? = nil
     var selectedPin:MKPlacemark? = nil
     @IBOutlet weak var labelCenterYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var forwardButton: UIButton!
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
         super.applyLayoutAttributes(layoutAttributes)
-        
-        backButton.alpha = delta
-        forwardButton.alpha = delta
         
         //move map and label
         if(delta > 0){
@@ -50,7 +45,11 @@ class WhereCollectionViewCell: ImageCollectionViewCell {
         let mapViewFrame = CGRect(x: 0, y: frame.size.height, width: frame.size.width, height: 0)
         mapView = MKMapView(frame: mapViewFrame)
         addSubview(mapView)
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+
         
         //load location search table
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -79,14 +78,6 @@ class WhereCollectionViewCell: ImageCollectionViewCell {
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
-    }
-
-    @IBAction func forwardButtonTap(sender: AnyObject) {
-        print("forward")
-    }
-
-    @IBAction func backButtonTap(sender: AnyObject) {
-        print("back")
     }
 }
 

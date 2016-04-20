@@ -12,7 +12,6 @@ class WhenCollectionViewCell: ImageCollectionViewCell {
     
     @IBOutlet private weak var dayButton: UIButton!
     @IBOutlet private weak var nightButton: UIButton!
-    var whenViewController: WhenViewController!
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
         super.applyLayoutAttributes(layoutAttributes)
@@ -28,13 +27,5 @@ class WhenCollectionViewCell: ImageCollectionViewCell {
             dayButton.enabled = false;
             nightButton.enabled = false;
         }
-    }
-    
-    @IBAction func dayTap(sender: AnyObject) {
-        whenViewController.complete()
-    }
-
-    @IBAction func nightTap(sender: AnyObject) {
-        whenViewController.complete()
     }
 }
