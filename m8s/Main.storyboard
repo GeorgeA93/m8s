@@ -223,7 +223,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CId-no-eW1" id="r28-k4-jaL">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -275,9 +275,22 @@
                     <view key="view" contentMode="scaleToFill" id="7U1-VX-gAd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ku-tc-yP2" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="20" y="28" width="560" height="552"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0ku-tc-yP2" firstAttribute="trailing" secondItem="7U1-VX-gAd" secondAttribute="trailingMargin" id="4TR-zI-YGY"/>
+                            <constraint firstAttribute="bottom" secondItem="0ku-tc-yP2" secondAttribute="bottom" constant="20" symbolic="YES" id="G4t-Pw-d3A"/>
+                            <constraint firstItem="0ku-tc-yP2" firstAttribute="leading" secondItem="7U1-VX-gAd" secondAttribute="leadingMargin" id="czo-Lt-15s"/>
+                            <constraint firstItem="0ku-tc-yP2" firstAttribute="top" secondItem="XcQ-0b-L0M" secondAttribute="bottom" constant="8" symbolic="YES" id="w0W-U4-Jq5"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="swipingView" destination="0ku-tc-yP2" id="9wV-pd-4rI"/>
                         <segue destination="wgr-jB-9Ud" kind="presentation" identifier="ShowLogin" modalTransitionStyle="crossDissolve" id="ahh-fb-A6q"/>
                     </connections>
                 </viewController>

@@ -8,8 +8,11 @@
 
 import UIKit
 import SlideMenuControllerSwift
+import Koloda
 
 class SwipeViewController: UIViewController {
+    
+    @IBOutlet weak var swipingView: KolodaView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +24,14 @@ class SwipeViewController: UIViewController {
          //   self.performSegueWithIdentifier("ShowLogin", sender: self)
         } 
 
-        let loginButton = Services.userService.CreateFbLoginButton()
-        loginButton.center = self.view.center;
-        self.view.addSubview(loginButton);
+        //let loginButton = Services.userService.CreateFbLoginButton()
+       // loginButton.center = self.view.center;
+        //self.view.addSubview(loginButton);
 
+        swipingView.dataSource = self
+        swipingView.delegate = self
         
-        if let user = Services.userService.currentUser {
-            print(user.fullName)
-        } else {
-
-        }
+        self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,6 +48,46 @@ class SwipeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+//MARK: KolodaViewDelegate
+extension SwipeViewController: KolodaViewDelegate {
+    
+    func koloda(koloda: KolodaView, didSwipedCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
+        //Example: loading more cards
+        if index >= 3 {
+           // numberOfCards = 6
+            swipingView.reloadData()
+        }
+    }
+    
+    func kolodaDidRunOutOfCards(koloda: KolodaView) {
+        //dataSource.insert(UIImage(named: "Card_like_6")!, atIndex: kolodaView.currentCardIndex - 1)
+        //let position = swipingView.currentCardIndex
+        //swipingView.insertCardAtIndexRange(position...position, animated: true)
+    }
+    
+    func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://yalantis.com/")!)
+    }
+}
+
+//MARK: KolodaViewDataSource
+extension SwipeViewController: KolodaViewDataSource {
+    
+    func kolodaNumberOfCards(koloda:KolodaView) -> UInt {
+        return 10;
+    }
+    
+    func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
+        //return UIImageView(image: dataSource[Int(index)])
+        return UIView();
+    }
+    
+    func koloda(koloda: KolodaView, viewForCardOverlayAtIndex index: UInt) -> OverlayView? {
+        return NSBundle.mainBundle().loadNibNamed("OverlayView",
+                                                  owner: self, options: nil)[0] as? OverlayView
+    }
 }
 
 extension SwipeViewController : SlideMenuControllerDelegate {
