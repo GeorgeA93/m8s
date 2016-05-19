@@ -9,6 +9,8 @@
 import UIKit
 import SlideMenuControllerSwift
 import Koloda
+import Firebase
+import FirebaseAuth
 
 class SwipeViewController: UIViewController {
     
@@ -17,21 +19,19 @@ class SwipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //if the user needs to login show login screen
-        //if the user has no preferences show the preferences screen
-        //else we set up the swiping screen
-        if(true) {
-         //   self.performSegueWithIdentifier("ShowLogin", sender: self)
-        } 
-
-        //let loginButton = Services.userService.CreateFbLoginButton()
-       // loginButton.center = self.view.center;
-        //self.view.addSubview(loginButton);
-
-        swipingView.dataSource = self
-        swipingView.delegate = self
+        do {
+            try FIRAuth.auth()?.signOut()
+        } catch let signOutError as NSError {
+            print(signOutError.localizedDescription)
+        }
         
-        self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        if let _ = FIRAuth.auth()?.currentUser {
+            swipingView.dataSource = self
+            swipingView.delegate = self
+            self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        } else {
+            self.performSegueWithIdentifier("ShowLogin", sender: self)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -68,7 +68,7 @@ extension SwipeViewController: KolodaViewDelegate {
     }
     
     func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://yalantis.com/")!)
+       // UIApplication.sharedApplication().openURL(NSURL(string: "http://yalantis.com/")!)
     }
 }
 
@@ -80,12 +80,12 @@ extension SwipeViewController: KolodaViewDataSource {
     }
     
     func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
-        //return UIImageView(image: dataSource[Int(index)])
-        return UIView();
+        return (NSBundle.mainBundle().loadNibNamed("SwipeCardView",
+            owner: self, options: nil)[0] as? SwipeCardView)!
     }
     
     func koloda(koloda: KolodaView, viewForCardOverlayAtIndex index: UInt) -> OverlayView? {
-        return NSBundle.mainBundle().loadNibNamed("OverlayView",
+        return NSBundle.mainBundle().loadNibNamed("SwipingOverlayView",
                                                   owner: self, options: nil)[0] as? OverlayView
     }
 }

@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import Firebase
+import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let loginButton = Services.userService.CreateFbLoginButton()
+        let loginButton = FBSDKLoginButton()
+        loginButton.delegate = self
+        loginButton.readPermissions = ["email", "public_profile", "user_friends"]
         loginButton.center = self.view.center;
         self.view.addSubview(loginButton);
     }
@@ -21,6 +26,29 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        if let error = error {
+            print(error.localizedDescription)
+            //show something to user
+            return
+        }
+        let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+        firebaseLogin(credential)
+    }
+    
+    func firebaseLogin(credential: FIRAuthCredential) {
+        FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                //show something to user
+            }
+            //change to swipe view
+        })
     }
     
 

@@ -8,6 +8,10 @@ target 'm8s' do
   pod 'FBSDKShareKit', '~> 4.10'
   pod 'SlideMenuControllerSwift', '~> 2.1.1'
   pod 'Koloda', '~> 3.0.0'
+  pod "FMMosaicLayout"
+  pod "Firebase"
+  pod "Firebase/Auth"
+  pod "Firebase/Database"
 
 end
 
