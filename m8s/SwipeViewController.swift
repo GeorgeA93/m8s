@@ -19,11 +19,13 @@ class SwipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
         do {
             try FIRAuth.auth()?.signOut()
         } catch let signOutError as NSError {
             print(signOutError.localizedDescription)
         }
+ */
         
         if let _ = FIRAuth.auth()?.currentUser {
             swipingView.dataSource = self

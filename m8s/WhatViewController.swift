@@ -8,12 +8,32 @@
 
 import UIKit
 
+import Firebase
+import FirebaseDatabase
+
 class WhatViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var whatCollectionView: UICollectionView!
+
+    var whatItems = [WhatItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let ref = FIRDatabase.database().reference().child("what-items")
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            var newItems = [WhatItem]()
+            for item in snapshot.children {
+                let name = item.value["name"] as! String
+                let imageLocation = item.value["imageLocation"] as! String
+                let whatItem = WhatItem(name: name, imageLocation: imageLocation, key: item.key)
+                whatItem.loadImage({
+                    newItems.append(whatItem)
+                    self.whatItems = newItems
+                    self.whatCollectionView.reloadData()
+                })
+            }
+        })
         
         whatCollectionView.dataSource = self
         whatCollectionView.delegate = self
@@ -23,6 +43,7 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let layout = whatCollectionView.collectionViewLayout as! ImageCollectionViewLayout
         layout.prepareLayout()
         // Do any additional setup after loading the view.
+        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -44,26 +65,15 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4;
+        return self.whatItems.count;
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WhatCell", forIndexPath: indexPath) as! WhatCollectionViewCell
-        if(indexPath.row == 0){
-            cell.label!.text = "ANYTHING";
-            cell.imageView!.image = UIImage(named: "city7");
-        } else if(indexPath.row == 1){
-            cell.label!.text = "DRINKS";
-            cell.imageView!.image = UIImage(named: "city2");
-            
-        } else if(indexPath.row == 2){
-            cell.label!.text = "CLUBBING";
-            cell.imageView!.image = UIImage(named: "city3");
-            
-        } else if(indexPath.row == 3){
-            cell.label!.text = "CINEMA";
-            cell.imageView!.image = UIImage(named: "city5");
-        }
+        
+        let whatItem = self.whatItems[indexPath.row]
+        cell.label?.text = whatItem.name
+        cell.imageView.image = whatItem.image
         
         return cell
     }

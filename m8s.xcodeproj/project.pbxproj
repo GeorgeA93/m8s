@@ -41,6 +41,7 @@
 		B98ACE371CCFF3EF000A778C /* SwipeCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98ACE351CCFF3EF000A778C /* SwipeCardCollectionViewCell.swift */; };
 		B98ACE381CCFF3EF000A778C /* SwipeCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98ACE361CCFF3EF000A778C /* SwipeCardCollectionViewCell.xib */; };
 		B9939F021CEE29B000454C25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9939F011CEE29B000454C25 /* GoogleService-Info.plist */; };
+		B9939F061CEE496E00454C25 /* WhatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9939F051CEE496E00454C25 /* WhatItem.swift */; };
 		B99A66971CBD6679006AB0F5 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99A66961CBD6679006AB0F5 /* MenuHeaderView.swift */; };
 		B9DEFED01CB16A210068A356 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEFECF1CB16A210068A356 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		B98ACE351CCFF3EF000A778C /* SwipeCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		B98ACE361CCFF3EF000A778C /* SwipeCardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwipeCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		B9939F011CEE29B000454C25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B9939F051CEE496E00454C25 /* WhatItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatItem.swift; sourceTree = "<group>"; };
 		B99A66961CBD6679006AB0F5 /* MenuHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
 		B9DEFECF1CB16A210068A356 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		FF8C6C5B03760A614266D934 /* Pods-m8s.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-m8s.release.xcconfig"; path = "Pods/Target Support Files/Pods-m8s/Pods-m8s.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		B972E1211CAC50630004F3DC /* m8s */ = {
 			isa = PBXGroup;
 			children = (
+				B9939F041CEE495D00454C25 /* Models */,
 				B977BC0C1CBAA3C300263F23 /* Extensions */,
 				B9DEFECE1CB169300068A356 /* Layouts */,
 				B9DEFECD1CB169260068A356 /* Cells */,
@@ -220,6 +223,14 @@
 				B977BC131CBAA51100263F23 /* StringExtensions.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		B9939F041CEE495D00454C25 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B9939F051CEE496E00454C25 /* WhatItem.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		B9DEFEB91CAD96780068A356 /* Frameworks */ = {
@@ -505,6 +516,7 @@
 				B977BC0B1CBAA3BF00263F23 /* UIViewControllerExtensions.swift in Sources */,
 				B977BC121CBAA4FB00263F23 /* UIColorExtensions.swift in Sources */,
 				B977BC161CBAAD3400263F23 /* SwipeViewController.swift in Sources */,
+				B9939F061CEE496E00454C25 /* WhatItem.swift in Sources */,
 				B969D1FC1CB597C400A4ABD6 /* ImageCollectionViewCell.swift in Sources */,
 				B99A66971CBD6679006AB0F5 /* MenuHeaderView.swift in Sources */,
 				B972E1531CAC50B30004F3DC /* WhenCollectionViewCell.swift in Sources */,
