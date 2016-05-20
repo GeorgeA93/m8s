@@ -48,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.createMenuView()
 
+         StorageService.loadItemsFromStorage()
+        
         return true
     }
     

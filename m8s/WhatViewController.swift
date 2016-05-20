@@ -16,24 +16,14 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var whatCollectionView: UICollectionView!
 
     var whatItems = [WhatItem]()
+    var whatItemRef: FIRDatabaseReference!
+    var handle: UInt!
+    var imageSubscriptionId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ref = FIRDatabase.database().reference().child("what-items")
-        ref.observeEventType(.Value, withBlock: { snapshot in
-            var newItems = [WhatItem]()
-            for item in snapshot.children {
-                let name = item.value["name"] as! String
-                let imageLocation = item.value["imageLocation"] as! String
-                let whatItem = WhatItem(name: name, imageLocation: imageLocation, key: item.key)
-                whatItem.loadImage({
-                    newItems.append(whatItem)
-                    self.whatItems = newItems
-                    self.whatCollectionView.reloadData()
-                })
-            }
-        })
+        self.whatItemRef = FIRDatabase.database().reference().child("what-items")
         
         whatCollectionView.dataSource = self
         whatCollectionView.delegate = self
@@ -42,15 +32,36 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
         let layout = whatCollectionView.collectionViewLayout as! ImageCollectionViewLayout
         layout.prepareLayout()
-        // Do any additional setup after loading the view.
-        
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "WHAT"
+        
+        self.imageSubscriptionId = StorageService.subscribe(StorageService.Key.Images, callback: {
+            print("reloading data")
+            self.whatCollectionView.reloadData()
+        })
+        
+        self.handle = self.whatItemRef.observeEventType(.Value, withBlock: { snapshot in
+            var newItems = [WhatItem]()
+            for item in snapshot.children {
+                let name = item.value["name"] as! String
+                let imageKey = item.value["imageKey"] as! String
+                let whatItem = WhatItem(name: name, imageKey: imageKey, key: item.key)
+                newItems.append(whatItem)
+            }
+            self.whatItems = newItems
+            self.whatCollectionView.reloadData()
+        })
     }
 
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.whatItemRef.removeObserverWithHandle(self.handle)
+        StorageService.unsubscribe(self.imageSubscriptionId)
+    }
+    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
@@ -73,8 +84,11 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         let whatItem = self.whatItems[indexPath.row]
         cell.label?.text = whatItem.name
-        cell.imageView.image = whatItem.image
         
+        if let image = StorageService.getImageWithKey(whatItem.imageKey) {
+             cell.imageView.image = image.uiimage
+        }
+    
         return cell
     }
     

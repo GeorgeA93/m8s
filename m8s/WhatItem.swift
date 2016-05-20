@@ -8,47 +8,23 @@
 
 
 import Firebase
-import FirebaseStorage
 
 class WhatItem {
     
     var key: String!
     var name: String!
-    var image: UIImage!
-    private var imageLocation: String!
+    var imageKey: String!
     
-    init(name: String, imageLocation: String, key: String = ""){
+    init(name: String, imageKey: String, key: String = ""){
         self.key = key
         self.name = name
-        self.imageLocation = imageLocation
-    }
-    
-    func loadImage(completion: (() -> Void)!) {
-        if let _ = self.image {
-            completion()
-            return
-        }
-        
-        if(self.imageLocation == ""){
-            return
-        }
-        
-        let storageRef = FIRStorage.storage()
-        let imageRef = storageRef.referenceForURL(self.imageLocation)
-        
-        imageRef.dataWithMaxSize(1 * 1024 * 1024, completion: { (data, error) -> Void in
-            if(error != nil){
-                print(error?.localizedDescription)
-            } else {
-                self.image = UIImage(data: data!)
-                completion()
-            }
-        })
+        self.imageKey = imageKey
     }
     
     func toAnyObject() -> AnyObject {
         return [
-            "name": name
+            "name": name,
+            "imageKey": imageKey
         ]
     }
     

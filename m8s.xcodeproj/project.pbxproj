@@ -43,6 +43,9 @@
 		B9939F021CEE29B000454C25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9939F011CEE29B000454C25 /* GoogleService-Info.plist */; };
 		B9939F061CEE496E00454C25 /* WhatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9939F051CEE496E00454C25 /* WhatItem.swift */; };
 		B99A66971CBD6679006AB0F5 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99A66961CBD6679006AB0F5 /* MenuHeaderView.swift */; };
+		B9B51D2C1CEF804E005350ED /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B51D2B1CEF804E005350ED /* StorageService.swift */; };
+		B9B51D2E1CEF8077005350ED /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B51D2D1CEF8077005350ED /* Image.swift */; };
+		B9B51D301CEF8775005350ED /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B51D2F1CEF8775005350ED /* Subscription.swift */; };
 		B9DEFED01CB16A210068A356 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEFECF1CB16A210068A356 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +111,9 @@
 		B9939F011CEE29B000454C25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9939F051CEE496E00454C25 /* WhatItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatItem.swift; sourceTree = "<group>"; };
 		B99A66961CBD6679006AB0F5 /* MenuHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
+		B9B51D2B1CEF804E005350ED /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		B9B51D2D1CEF8077005350ED /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		B9B51D2F1CEF8775005350ED /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		B9DEFECF1CB16A210068A356 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		FF8C6C5B03760A614266D934 /* Pods-m8s.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-m8s.release.xcconfig"; path = "Pods/Target Support Files/Pods-m8s/Pods-m8s.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +179,7 @@
 		B972E1211CAC50630004F3DC /* m8s */ = {
 			isa = PBXGroup;
 			children = (
+				B9B51D2A1CEF803F005350ED /* Services */,
 				B9939F041CEE495D00454C25 /* Models */,
 				B977BC0C1CBAA3C300263F23 /* Extensions */,
 				B9DEFECE1CB169300068A356 /* Layouts */,
@@ -229,8 +236,18 @@
 			isa = PBXGroup;
 			children = (
 				B9939F051CEE496E00454C25 /* WhatItem.swift */,
+				B9B51D2D1CEF8077005350ED /* Image.swift */,
+				B9B51D2F1CEF8775005350ED /* Subscription.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		B9B51D2A1CEF803F005350ED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B9B51D2B1CEF804E005350ED /* StorageService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		B9DEFEB91CAD96780068A356 /* Frameworks */ = {
@@ -301,12 +318,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B972E1471CAC50630004F3DC /* Build configuration list for PBXNativeTarget "m8s" */;
 			buildPhases = (
-				8A11C397DAAB3D1DD6519028 /* 📦 Check Pods Manifest.lock */,
+				8A11C397DAAB3D1DD6519028 /* uD83DuDCE6 Check Pods Manifest.lock */,
 				B972E11B1CAC50630004F3DC /* Sources */,
 				B972E11C1CAC50630004F3DC /* Frameworks */,
 				B972E11D1CAC50630004F3DC /* Resources */,
-				8BCBB80881DB432C48285F11 /* 📦 Embed Pods Frameworks */,
-				724206C131E6EF383FC696F7 /* 📦 Copy Pods Resources */,
+				8BCBB80881DB432C48285F11 /* uD83DuDCE6 Embed Pods Frameworks */,
+				724206C131E6EF383FC696F7 /* uD83DuDCE6 Copy Pods Resources */,
 				0E4318BA98800279DE787617 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -446,14 +463,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-m8s/Pods-m8s-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		724206C131E6EF383FC696F7 /* 📦 Copy Pods Resources */ = {
+		724206C131E6EF383FC696F7 /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,14 +478,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-m8s/Pods-m8s-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8A11C397DAAB3D1DD6519028 /* 📦 Check Pods Manifest.lock */ = {
+		8A11C397DAAB3D1DD6519028 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,14 +493,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		8BCBB80881DB432C48285F11 /* 📦 Embed Pods Frameworks */ = {
+		8BCBB80881DB432C48285F11 /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "uD83DuDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +519,7 @@
 				B969D1FE1CB599D500A4ABD6 /* WhatViewController.swift in Sources */,
 				B977BC1C1CBAD17300263F23 /* AboutViewController.swift in Sources */,
 				B977BC1E1CBAD34500263F23 /* LoginViewController.swift in Sources */,
+				B9B51D2E1CEF8077005350ED /* Image.swift in Sources */,
 				B967FEA81CC3E43800C49707 /* LocationSearchTableViewController.swift in Sources */,
 				B977BC1A1CBAD05F00263F23 /* SettingsViewController.swift in Sources */,
 				B98ACE301CCFF0F1000A778C /* SwipeCardView.swift in Sources */,
@@ -509,8 +527,10 @@
 				B98ACE2C1CCFEE0C000A778C /* SwipingOverlayView.swift in Sources */,
 				B977BC221CBAD4AA00263F23 /* InviteFriendsViewController.swift in Sources */,
 				B967FEAA1CC401EA00C49707 /* WhereCollectionViewCell.swift in Sources */,
+				B9B51D301CEF8775005350ED /* Subscription.swift in Sources */,
 				B972E1541CAC50B30004F3DC /* ImageCollectionViewLayout.swift in Sources */,
 				B977BC181CBAB0CD00263F23 /* ExSlideMenuController.swift in Sources */,
+				B9B51D2C1CEF804E005350ED /* StorageService.swift in Sources */,
 				B9DEFED01CB16A210068A356 /* MenuViewController.swift in Sources */,
 				B98ACE371CCFF3EF000A778C /* SwipeCardCollectionViewCell.swift in Sources */,
 				B977BC0B1CBAA3BF00263F23 /* UIViewControllerExtensions.swift in Sources */,
