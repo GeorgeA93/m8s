@@ -40,9 +40,14 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         self.imageSubscriptionId = StorageService.subscribe(StorageService.Key.Images, callback: {
             print("reloading data")
-            self.whatCollectionView.reloadData()
+            self.fetchWhatItems()
         })
         
+        self.fetchWhatItems()
+    }
+    
+    private func fetchWhatItems() {
+        self.unFetchWhatItems()
         self.handle = self.whatItemRef.observeEventType(.Value, withBlock: { snapshot in
             var newItems = [WhatItem]()
             for item in snapshot.children {
@@ -55,10 +60,18 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
             self.whatCollectionView.reloadData()
         })
     }
+    
+    private func unFetchWhatItems(){
+        if let whatItemRef = self.whatItemRef {
+            if let handle = self.handle {
+                whatItemRef.removeObserverWithHandle(handle)
+            }
+        }
+    }
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self.whatItemRef.removeObserverWithHandle(self.handle)
+        self.unFetchWhatItems()
         StorageService.unsubscribe(self.imageSubscriptionId)
     }
     
