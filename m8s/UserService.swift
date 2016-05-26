@@ -29,15 +29,15 @@ class UserService {
             preference.hasChild("whenItemId"))
     }
     
-    static func getPreferences(completion: (Preference!) -> Void) {
+    static func getCurrentPreference(completion: (Preference!) -> Void) {
         if let user = currentUser() {
-            getPreferences(user, completion: completion)
+            getCurrentPreference(user, completion: completion)
         } else {
             completion(nil)
         }
     }
     
-    static func getPreferences(user: FIRUser, completion: (Preference!) -> Void) {
+    static func getCurrentPreference(user: FIRUser, completion: (Preference!) -> Void) {
         databaseRef.child("preferences").child(user.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
             if(snapshot.exists()) {
                 if let value = snapshot.value {

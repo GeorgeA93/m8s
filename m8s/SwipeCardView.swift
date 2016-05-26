@@ -28,6 +28,7 @@ class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //return 250
         return 1
     }
     
@@ -38,7 +39,8 @@ class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: FMMosaicLayout!, numberOfColumnsInSection section: Int) -> Int {
-        return 1
+        //return 10
+        return 10
     }
     
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: FMMosaicLayout!, mosaicCellSizeForItemAtIndexPath indexPath: NSIndexPath!) -> FMMosaicCellSize {

@@ -17,6 +17,8 @@ class Preference {
     var whatItem: WhatItem?
     var whenItemId: String!
     var whenItem: WhenItem?
+    var wherePreferenceId: String!
+    var wherePreference: WherePreference?
     
     init(uid: String, whatItemId: String, whenItemId: String){
         self.uid = uid

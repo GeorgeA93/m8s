@@ -30,12 +30,13 @@ class SwipeViewController: UIViewController {
     
     //This code should be in viewWillAppear but an issue with SlideMenuControllerSwift needs to be fixed first
     //The relevant issues where #129 and #95
+    //Potentially fixed when PR #50 is merged
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.setNavigationBarItem("M8S")
-        UserService.getPreferences({preferences in
+        UserService.getCurrentPreference({preferences in
             if(preferences == nil){
-                self.performSegueWithIdentifier("noPreferences", sender: self)
+               // self.performSegueWithIdentifier("noPreferences", sender: self)
             }
         })
     }
@@ -48,8 +49,6 @@ class SwipeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 }
-
-
 
 //MARK: KolodaViewDelegate
 extension SwipeViewController: KolodaViewDelegate {
