@@ -10,6 +10,7 @@ import UIKit
 import SlideMenuControllerSwift
 import Koloda
 import Firebase
+import FirebaseDatabase
 import FirebaseAuth
 
 class SwipeViewController: UIViewController {
@@ -26,11 +27,18 @@ class SwipeViewController: UIViewController {
             print(signOutError.localizedDescription)
         }
  */
-        
-        if let _ = FIRAuth.auth()?.currentUser {
+        if let _ = UserService.currentUser() {
             swipingView.dataSource = self
             swipingView.delegate = self
             self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+            UserService.getPreferences({preferences in
+                if let _ = preferences {
+                    print("we got some")
+                } else {
+                    print("we dont have any")
+                }
+            })
+           
         } else {
             self.performSegueWithIdentifier("ShowLogin", sender: self)
         }
@@ -47,9 +55,7 @@ class SwipeViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
 }
 
 //MARK: KolodaViewDelegate
