@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B65091BFE65EFA004FCF9AA /* Pods_m8s.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD18FDD89725238FFD8A219 /* Pods_m8s.framework */; };
+		B910C31C1CF77E240059C7F4 /* SlideMenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B910C31B1CF77E240059C7F4 /* SlideMenuService.swift */; };
 		B92A918B1CF61E1D00766340 /* WhenItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A918A1CF61E1D00766340 /* WhenItem.swift */; };
 		B92A918D1CF61E2500766340 /* WhereItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A918C1CF61E2500766340 /* WhereItem.swift */; };
 		B92A918F1CF61ECA00766340 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A918E1CF61ECA00766340 /* Preference.swift */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		3CD18FDD89725238FFD8A219 /* Pods_m8s.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_m8s.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14A6D4E5E855E0E902FD34F /* Pods-m8s.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-m8s.release.xcconfig"; path = "Pods/Target Support Files/Pods-m8s/Pods-m8s.release.xcconfig"; sourceTree = "<group>"; };
+		B910C31B1CF77E240059C7F4 /* SlideMenuService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuService.swift; sourceTree = "<group>"; };
 		B92A918A1CF61E1D00766340 /* WhenItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenItem.swift; sourceTree = "<group>"; };
 		B92A918C1CF61E2500766340 /* WhereItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereItem.swift; sourceTree = "<group>"; };
 		B92A918E1CF61ECA00766340 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			children = (
 				B9B51D2B1CEF804E005350ED /* StorageService.swift */,
 				B92A91921CF62CBC00766340 /* UserService.swift */,
+				B910C31B1CF77E240059C7F4 /* SlideMenuService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				B972E1551CAC50B30004F3DC /* WhenViewController.swift in Sources */,
 				B969D1FE1CB599D500A4ABD6 /* WhatViewController.swift in Sources */,
 				B977BC1C1CBAD17300263F23 /* AboutViewController.swift in Sources */,
+				B910C31C1CF77E240059C7F4 /* SlideMenuService.swift in Sources */,
 				B977BC1E1CBAD34500263F23 /* LoginViewController.swift in Sources */,
 				B9B51D2E1CEF8077005350ED /* Image.swift in Sources */,
 				B967FEA81CC3E43800C49707 /* LocationSearchTableViewController.swift in Sources */,

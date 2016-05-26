@@ -12,41 +12,13 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
 
-    private func createMenuView() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("SwipeViewController") as! SwipeViewController
-        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
-
-        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
-
-        UINavigationBar.appearance().tintColor = UIColor(hex: "FFFEF2")
-        UINavigationBar.appearance().backgroundColor = UIColor(hex: "0A0609")
-        UINavigationBar.appearance().barTintColor = UIColor(hex: "0A0609")
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(hex: "FFFEF2")]
-        
-        leftViewController.mainViewController = nvc
-
-        SlideMenuOptions.leftBezelWidth = 60
-        SlideMenuOptions.contentViewScale = 1
-        
-        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
-        slideMenuController.automaticallyAdjustsScrollViewInsets = true
-        slideMenuController.delegate = mainViewController
-        self.window?.rootViewController = slideMenuController
-        self.window?.makeKeyAndVisible()
-    }
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
         FIRApp.configure()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-
-        self.createMenuView()
         
         UserService.create()
         StorageService.loadItemsFromStorage()

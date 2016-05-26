@@ -19,34 +19,25 @@ class SwipeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch let signOutError as NSError {
-            print(signOutError.localizedDescription)
-        }
- */
-        if let _ = UserService.currentUser() {
-            swipingView.dataSource = self
-            swipingView.delegate = self
-            self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-            UserService.getPreferences({preferences in
-                if let _ = preferences {
-                    print("we got some")
-                } else {
-                    print("we dont have any")
-                }
-            })
-           
-        } else {
-            self.performSegueWithIdentifier("ShowLogin", sender: self)
-        }
+        swipingView.dataSource = self
+        swipingView.delegate = self
+        self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    //This code should be in viewWillAppear but an issue with SlideMenuControllerSwift needs to be fixed first
+    //The relevant issues where #129 and #95
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         self.setNavigationBarItem("M8S")
+        UserService.getPreferences({preferences in
+            if(preferences == nil){
+                self.performSegueWithIdentifier("noPreferences", sender: self)
+            }
+        })
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -57,6 +48,8 @@ class SwipeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 }
+
+
 
 //MARK: KolodaViewDelegate
 extension SwipeViewController: KolodaViewDelegate {
@@ -98,6 +91,8 @@ extension SwipeViewController: KolodaViewDataSource {
     }
 }
 
+
 extension SwipeViewController : SlideMenuControllerDelegate {
 
 }
+ 

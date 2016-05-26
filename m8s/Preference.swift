@@ -28,11 +28,15 @@ class Preference {
     
     private func loadWhatItem() {
         FIRDatabase.database().reference().child("what-items").child(whatItemId).observeSingleEventOfType(.Value, withBlock: { snapshot in
-            if let value = snapshot.value {
-                let name = value["name"] as! String
-                let imageKey = value["imageKey"] as! String
-                self.whatItem = WhatItem(name: name, imageKey: imageKey, key: snapshot.key)
-            } else {
+            if(snapshot.exists()){
+                if let value = snapshot.value {
+                    let name = value["name"] as! String
+                    let imageKey = value["imageKey"] as! String
+                    self.whatItem = WhatItem(name: name, imageKey: imageKey, key: snapshot.key)
+                } else {
+                    print("Failed to load what item on preference")
+                }
+            }  else {
                 print("Failed to load what item on preference")
             }
         })
@@ -40,10 +44,14 @@ class Preference {
     
     private func loadWhenItem() {
         FIRDatabase.database().reference().child("when-items").child(whenItemId).observeSingleEventOfType(.Value, withBlock: { snapshot in
-            if let value = snapshot.value {
-                let name = value["name"] as! String
-                let imageKey = value["imageKey"] as! String
-                self.whenItem = WhenItem(name: name, imageKey: imageKey, key: snapshot.key)
+            if(snapshot.exists()){
+                if let value = snapshot.value {
+                    let name = value["name"] as! String
+                    let imageKey = value["imageKey"] as! String
+                    self.whenItem = WhenItem(name: name, imageKey: imageKey, key: snapshot.key)
+                } else {
+                    print("Failed to load when item on preference")
+                }
             } else {
                 print("Failed to load when item on preference")
             }

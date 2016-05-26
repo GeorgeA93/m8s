@@ -23,7 +23,7 @@ class UserService {
         databaseRef = nil
     }
     
-    static func isValidPreference(preference: AnyObject) -> Bool {
+    private static func isValidPreference(preference: AnyObject) -> Bool {
         return (preference.hasChild("uid") &&
             preference.hasChild("whatItemId") &&
             preference.hasChild("whenItemId"))

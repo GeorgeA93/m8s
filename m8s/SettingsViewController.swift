@@ -7,18 +7,19 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var settingsTableView: UITableView!
-     var menus = ["Delete Account", "Setting Two", "Setting Three", "Setting Four"];
+     var menuItems = ["Delete Account", "Log Out"];
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -32,7 +33,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -40,32 +40,24 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menus.count
+        return menuItems.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SettingsTableViewCell", forIndexPath: indexPath)
-        
-        cell.textLabel!.text = menus[indexPath.row]
-        
+        cell.textLabel!.text = menuItems[indexPath.row]
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-       
+        if(indexPath.row == 1){
+            do {
+                try FIRAuth.auth()?.signOut()
+                self.performSegueWithIdentifier("logout", sender: self)
+            } catch let signOutError as NSError {
+                print(signOutError.localizedDescription)
+            }
+        }
     }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

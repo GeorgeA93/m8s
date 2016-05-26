@@ -13,19 +13,31 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    let loginButton = FBSDKLoginButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let loginButton = FBSDKLoginButton()
         loginButton.delegate = self
         loginButton.readPermissions = ["email", "public_profile", "user_friends"]
         loginButton.center = self.view.center;
         self.view.addSubview(loginButton);
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if let _ = UserService.currentUser() {
+            self.completeLogin()
+        } else {
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
@@ -47,19 +59,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 print(error.localizedDescription)
                 //show something to user
             }
-            //change to swipe view
+            self.completeLogin()
         })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func completeLogin() {
+        let slideMenuController = SlideMenuService.createSlideMenu()
+        self.presentViewController(slideMenuController, animated: false, completion: nil)
     }
-    */
 
 }
