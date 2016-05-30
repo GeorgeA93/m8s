@@ -29,7 +29,7 @@ class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return 250
-        return 1
+        return 73
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

@@ -69,15 +69,26 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private func fetchWhenItems() {
         self.unFetchWhenItems()
         self.handle = self.whenItemRef.observeEventType(.Value, withBlock: { snapshot in
-            var newItems = [WhenItem]()
+            var snapshotItems = [WhenItem]()
             for item in snapshot.children {
                 let name = item.value["name"] as! String
                 let imageKey = item.value["imageKey"] as! String
                 let whenItem = WhenItem(name: name, imageKey: imageKey, key: item.key)
-                newItems.append(whenItem)
+                snapshotItems.append(whenItem)
             }
-            print(self.getDayOfWeek())
-            self.whenItems = newItems
+            snapshotItems = snapshotItems.filter({$0.name.lowercaseString != self.getDayOfWeek(0).lowercaseString &&
+                $0.name.lowercaseString != self.getDayOfWeek(1).lowercaseString})
+            var orderedPlanDays = [WhenItem]()
+            orderedPlanDays.append(snapshotItems.filter({$0.name.lowercaseString == "today"})[0])
+            orderedPlanDays.append(snapshotItems.filter({$0.name.lowercaseString == "tomorrow"})[0])
+            for dayOfTheWeek in 2...snapshotItems.count {
+                for snapshotItem in snapshotItems {
+                    if self.getDayOfWeek(dayOfTheWeek).lowercaseString == snapshotItem.name.lowercaseString {
+                        orderedPlanDays.append(snapshotItem)
+                    }
+                }
+            }
+            self.whenItems = orderedPlanDays
             self.whenCollectionView.reloadData()
         })
     }
@@ -90,9 +101,11 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    private func getDayOfWeek() -> String {
+    private func getDayOfWeek(day: Int) -> String {
+        let today = NSDate()
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let components = calendar.components(.Weekday, fromDate: NSDate())
+        let planDate = calendar.dateByAddingUnit(NSCalendarUnit.Day, value: day, toDate: today, options: [])
+        let components = calendar.components(.Weekday, fromDate: planDate!)
         return components.weekday.toWeekday()
     }
 
@@ -126,8 +139,13 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let layout = whenCollectionView.collectionViewLayout as! ImageCollectionViewLayout
+        let selectedItem = layout.featuredItemIndex
+        let today = NSDate()
+        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let planDate = calendar.dateByAddingUnit(NSCalendarUnit.Day, value: selectedItem, toDate: today, options: [])
+        print(planDate)
         if(segue.identifier == "dayTapped") {
             //add day to preferences
             print("day")
