@@ -102,11 +102,7 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     private func getDayOfWeek(day: Int) -> String {
-        let today = NSDate()
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let planDate = calendar.dateByAddingUnit(NSCalendarUnit.Day, value: day, toDate: today, options: [])
-        let components = calendar.components(.Weekday, fromDate: planDate!)
-        return components.weekday.toWeekday()
+        return NSDate().add(day).getComponents(.Weekday).weekday.toWeekday()
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -142,16 +138,18 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let layout = whenCollectionView.collectionViewLayout as! ImageCollectionViewLayout
         let selectedItem = layout.featuredItemIndex
-        let today = NSDate()
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let planDate = calendar.dateByAddingUnit(NSCalendarUnit.Day, value: selectedItem, toDate: today, options: [])
-        print(planDate)
-        if(segue.identifier == "dayTapped") {
-            //add day to preferences
-            print("day")
-        } else if(segue.identifier == "nightTapped") {
-            //add night to preferences
-            print("night")
+        if let planDateStr = NSDate().add(selectedItem)?.toShortDateString() {
+            print(planDateStr)
+            if(segue.identifier == "dayTapped") {
+                //add day to preferences
+                print("day")
+            } else if(segue.identifier == "nightTapped") {
+                //add night to preferences
+                print("night")
+            }
+        } else {
+            //Present error to user
+            print("Error converting date to string")
         }
      }
 }
