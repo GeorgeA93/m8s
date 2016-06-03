@@ -1,7 +1,14 @@
+branches:
+  only:
+    - master
 language: objective-c
 osx_image: xcode7.3
 xcode_project: m8s.xcodeproj
 xcode_scheme: m8sTests
 before_install:
   - gem install cocoapods -v '1.0.0'
-  - pod repo update
+install:
+- |
+  bundle install
+  bundle exec pod repo update
+  bundle exec pod install
