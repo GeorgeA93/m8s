@@ -136,20 +136,20 @@ class WhenViewController: UIViewController, UICollectionViewDelegate, UICollecti
      // MARK: - Navigation
      
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let layout = whenCollectionView.collectionViewLayout as! ImageCollectionViewLayout
-        let selectedItem = layout.featuredItemIndex
-        if let planDateStr = NSDate().add(selectedItem)?.toShortDateString() {
-            print(planDateStr)
-            if(segue.identifier == "dayTapped") {
-                //add day to preferences
-                print("day")
-            } else if(segue.identifier == "nightTapped") {
-                //add night to preferences
-                print("night")
+        if segue.identifier == "dayTapped" || segue.identifier == "nightTapped" {
+            let whatViewController = segue.destinationViewController as! WhatViewController
+            let layout = whenCollectionView.collectionViewLayout as! ImageCollectionViewLayout
+            let selectedItem = layout.featuredItemIndex
+            if let planDateStr = NSDate().add(selectedItem)?.toShortDateString() {
+                if(segue.identifier == "dayTapped") {
+                    whatViewController.workingPlan = Plan(date: planDateStr, time: "day", activity: "", place: "", attendees: [])
+                } else if(segue.identifier == "nightTapped") {
+                    whatViewController.workingPlan = Plan(date: planDateStr, time: "night", activity: "", place: "", attendees: [])
+                }
+            } else {
+                //Present error to user
+                print("Error converting date to string")
             }
-        } else {
-            //Present error to user
-            print("Error converting date to string")
         }
      }
 }

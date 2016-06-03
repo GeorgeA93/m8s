@@ -15,6 +15,7 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     @IBOutlet weak var whatCollectionView: UICollectionView!
 
+    var workingPlan: Plan!
     var whatItems = [WhatItem]()
     var whatItemRef: FIRDatabaseReference!
     var handle: UInt!
@@ -114,21 +115,20 @@ class WhatViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func doneTapped() {
-        print("done")
-        let layout = whatCollectionView.collectionViewLayout as! ImageCollectionViewLayout //layout.featuredItemIndex is the currently selected cell so we will need that here
-        print(layout.featuredItemIndex)
+        let layout = whatCollectionView.collectionViewLayout as! ImageCollectionViewLayout
+        self.workingPlan.activity = self.whatItems[layout.featuredItemIndex].key
         self.performSegueWithIdentifier("doneTapped", sender: self)
     }
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "doneTapped" {
+            let whereViewController = segue.destinationViewController as! WhereViewController
+            whereViewController.workingPlan = self.workingPlan
+        }
     }
-    */
+    
 
 }

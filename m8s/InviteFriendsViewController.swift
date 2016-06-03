@@ -14,6 +14,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var searchController: UISearchController!
     var doneButton: UIBarButtonItem!
     var swipeViewController: UIViewController!
+    var workingPlan: Plan!
     
     var friends = ["Friend One", "Friend Two", "Friend Three", "Friend Four", "Friend Five", "Friend Six",
                    "Friend Seven", "Friend Eight", "Friend Nine", "Friend Ten", "Friend Eleven", "Friend Twelve",

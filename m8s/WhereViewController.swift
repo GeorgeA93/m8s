@@ -13,6 +13,7 @@ import MapKit
 class WhereViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var whereCollectionView: UICollectionView!
+    var workingPlan: Plan!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,9 +78,19 @@ class WhereViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func doneTapped() {
-        print("done")
-        let layout = whereCollectionView.collectionViewLayout as! ImageCollectionViewLayout //layout.featuredItemIndex is the currently selected cell so we will need that here
-        print(layout.featuredItemIndex)
+       // let layout = whereCollectionView.collectionViewLayout as! ImageCollectionViewLayout
+       
         self.performSegueWithIdentifier("doneTapped", sender: self)
     }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "doneTapped" {
+            let inviteViewController = segue.destinationViewController as! InviteFriendsViewController
+            inviteViewController.workingPlan = self.workingPlan
+        }
+    }
+
 }
