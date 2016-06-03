@@ -1,0 +1,3 @@
+language: objective-c
+xcode_project: m8s.xcodeproj
+xcode_scheme: m8sTests
