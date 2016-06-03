@@ -1,3 +1,5 @@
 language: objective-c
 xcode_project: m8s.xcodeproj
 xcode_scheme: m8sTests
+before_install:
+  - gem install cocoapods -v '1.0.0'
