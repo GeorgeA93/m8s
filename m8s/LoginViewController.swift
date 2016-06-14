@@ -29,7 +29,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if let _ = UserService.currentUser() {
+        if let _ = UserService.shared.currentUser() {
             self.completeLogin()
         } else {
             self.navigationController?.setNavigationBarHidden(true, animated: animated)

@@ -9,13 +9,9 @@
 /* Begin PBXBuildFile section */
 		7B65091BFE65EFA004FCF9AA /* Pods_m8s.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD18FDD89725238FFD8A219 /* Pods_m8s.framework */; };
 		B910C31C1CF77E240059C7F4 /* SlideMenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B910C31B1CF77E240059C7F4 /* SlideMenuService.swift */; };
-		B910C31E1CF78AB40059C7F4 /* WherePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B910C31D1CF78AB40059C7F4 /* WherePreference.swift */; };
 		B910C3201CF78E3B0059C7F4 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B910C31F1CF78E3B0059C7F4 /* IntExtensions.swift */; };
-		B910C3221CF7903A0059C7F4 /* WhenPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B910C3211CF7903A0059C7F4 /* WhenPreference.swift */; };
-		B910C3241CF7904A0059C7F4 /* WhatPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B910C3231CF7904A0059C7F4 /* WhatPreference.swift */; };
 		B92A918B1CF61E1D00766340 /* WhenItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A918A1CF61E1D00766340 /* WhenItem.swift */; };
 		B92A918D1CF61E2500766340 /* WhereItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A918C1CF61E2500766340 /* WhereItem.swift */; };
-		B92A918F1CF61ECA00766340 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A918E1CF61ECA00766340 /* Preference.swift */; };
 		B92A91911CF61EF700766340 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A91901CF61EF700766340 /* Plan.swift */; };
 		B92A91931CF62CBC00766340 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A91921CF62CBC00766340 /* UserService.swift */; };
 		B94F35411CC039490049DEA6 /* WhatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F35401CC039490049DEA6 /* WhatCollectionViewCell.swift */; };
@@ -83,13 +79,9 @@
 		3CD18FDD89725238FFD8A219 /* Pods_m8s.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_m8s.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14A6D4E5E855E0E902FD34F /* Pods-m8s.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-m8s.release.xcconfig"; path = "Pods/Target Support Files/Pods-m8s/Pods-m8s.release.xcconfig"; sourceTree = "<group>"; };
 		B910C31B1CF77E240059C7F4 /* SlideMenuService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuService.swift; sourceTree = "<group>"; };
-		B910C31D1CF78AB40059C7F4 /* WherePreference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WherePreference.swift; sourceTree = "<group>"; };
 		B910C31F1CF78E3B0059C7F4 /* IntExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
-		B910C3211CF7903A0059C7F4 /* WhenPreference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenPreference.swift; sourceTree = "<group>"; };
-		B910C3231CF7904A0059C7F4 /* WhatPreference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatPreference.swift; sourceTree = "<group>"; };
 		B92A918A1CF61E1D00766340 /* WhenItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenItem.swift; sourceTree = "<group>"; };
 		B92A918C1CF61E2500766340 /* WhereItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereItem.swift; sourceTree = "<group>"; };
-		B92A918E1CF61ECA00766340 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		B92A91901CF61EF700766340 /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		B92A91921CF62CBC00766340 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		B94F35401CC039490049DEA6 /* WhatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -277,11 +269,7 @@
 				B9B51D2F1CEF8775005350ED /* Subscription.swift */,
 				B92A918A1CF61E1D00766340 /* WhenItem.swift */,
 				B92A918C1CF61E2500766340 /* WhereItem.swift */,
-				B92A918E1CF61ECA00766340 /* Preference.swift */,
 				B92A91901CF61EF700766340 /* Plan.swift */,
-				B910C31D1CF78AB40059C7F4 /* WherePreference.swift */,
-				B910C3211CF7903A0059C7F4 /* WhenPreference.swift */,
-				B910C3231CF7904A0059C7F4 /* WhatPreference.swift */,
 				B9BE4E391CFF595D006E3135 /* UserPlan.swift */,
 			);
 			name = Models;
@@ -593,18 +581,15 @@
 				B910C31C1CF77E240059C7F4 /* SlideMenuService.swift in Sources */,
 				B977BC1E1CBAD34500263F23 /* LoginViewController.swift in Sources */,
 				B9B51D2E1CEF8077005350ED /* Image.swift in Sources */,
-				B910C31E1CF78AB40059C7F4 /* WherePreference.swift in Sources */,
 				B967FEA81CC3E43800C49707 /* LocationSearchTableViewController.swift in Sources */,
 				B92A91931CF62CBC00766340 /* UserService.swift in Sources */,
 				B977BC1A1CBAD05F00263F23 /* SettingsViewController.swift in Sources */,
 				B98ACE301CCFF0F1000A778C /* SwipeCardView.swift in Sources */,
 				B977BC101CBAA4BD00263F23 /* UIApplicationExtensions.swift in Sources */,
 				B98ACE2C1CCFEE0C000A778C /* SwipingOverlayView.swift in Sources */,
-				B92A918F1CF61ECA00766340 /* Preference.swift in Sources */,
 				B977BC221CBAD4AA00263F23 /* InviteFriendsViewController.swift in Sources */,
 				B967FEAA1CC401EA00C49707 /* WhereCollectionViewCell.swift in Sources */,
 				B9B51D301CEF8775005350ED /* Subscription.swift in Sources */,
-				B910C3241CF7904A0059C7F4 /* WhatPreference.swift in Sources */,
 				B972E1541CAC50B30004F3DC /* ImageCollectionViewLayout.swift in Sources */,
 				B977BC181CBAB0CD00263F23 /* ExSlideMenuController.swift in Sources */,
 				B9B51D2C1CEF804E005350ED /* StorageService.swift in Sources */,
@@ -619,7 +604,6 @@
 				B977BC161CBAAD3400263F23 /* SwipeViewController.swift in Sources */,
 				B9939F061CEE496E00454C25 /* WhatItem.swift in Sources */,
 				B969D1FC1CB597C400A4ABD6 /* ImageCollectionViewCell.swift in Sources */,
-				B910C3221CF7903A0059C7F4 /* WhenPreference.swift in Sources */,
 				B92A91911CF61EF700766340 /* Plan.swift in Sources */,
 				B99A66971CBD6679006AB0F5 /* MenuHeaderView.swift in Sources */,
 				B972E1531CAC50B30004F3DC /* WhenCollectionViewCell.swift in Sources */,

@@ -34,26 +34,18 @@ class SwipeViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.setNavigationBarItem("M8S")
-        UserService.getCurrentPreference({preferences in
-            if(preferences == nil){
-               // self.performSegueWithIdentifier("noPreferences", sender: self)
+        
+        //show loading indicator
+        
+        UserService.shared.getPlanForToday({ plan in
+            // hide loading indicator
+            if plan == nil {
+                // self.performSegueWithIdentifier("noPreferences", sender: self)
             }
         })
-        
+
         /*
-        if let user = UserService.currentUser() {
-         
-            for index in 0...4 {
-                let plan = Plan(date: "6/15/16", time: "day", activity: "anything", place: "anywhere", attendees: ["a", "b", "c"])
-                let planId = FIRDatabase.database().reference().child("plans").childByAutoId().key
-                planIds.append(planId)
-                FIRDatabase.database().reference().child("plans").child(planId).setValue(plan.toAnyObject())
-            }
-            let userPlan = UserPlan(planIds: planIds)
-            FIRDatabase.database().reference().child("user-plans").child(user.uid).setValue(userPlan.toAnyObject())
-        }
- */
-        if let user = UserService.currentUser() {
+        if let user = UserService.shared.currentUser() {
             var planIds = [String]()
             let plan = Plan(date: NSDate().toShortDateString(), time: "day", activity: "anything", place: "anywhere", attendees: ["a", "b", "c"])
             let planId = FIRDatabase.database().reference().child("plans").childByAutoId().key
@@ -62,11 +54,7 @@ class SwipeViewController: UIViewController {
             let userPlan = UserPlan(planIds: planIds)
             FIRDatabase.database().reference().child("user-plans").child(user.uid).setValue(userPlan.toAnyObject())
         }
-        
-        UserService.getPlanForToday({ plan in
-        })
- 
-       
+ */
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {

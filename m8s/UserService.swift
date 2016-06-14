@@ -11,21 +11,27 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
+private let _shared = UserService()
+
 class UserService {
-
-    private static let concurrentPlanQueue = dispatch_queue_create(
+    class var shared: UserService {
+        return _shared
+    }
+    
+    private let concurrentPlanQueue = dispatch_queue_create(
     "com.allen.george.m8s.planQueue", DISPATCH_QUEUE_CONCURRENT)
-    private static var databaseRef: FIRDatabaseReference!
-
-    static func create() {
-        databaseRef = FIRDatabase.database().reference()
+    
+    private var databaseRef: FIRDatabaseReference!
+    
+    init() {
+        self.databaseRef = FIRDatabase.database().reference()
     }
 
-    static func destroy() {
+    func destroy() {
         databaseRef = nil
     }
 
-    static func getPlanForToday(completion: (Plan!) -> Void) {
+    func getPlanForToday(completion: (Plan!) -> Void) {
         if let user = currentUser() {
             getPlanForToday(user, completion: completion)
         } else {
@@ -33,7 +39,7 @@ class UserService {
         }
     }
 
-    static func getPlanForToday(user: FIRUser, completion: (Plan!) -> Void) {
+    func getPlanForToday(user: FIRUser, completion: (Plan!) -> Void) {
         getUserPlans(user, completion: {
             plans in
             if let plans = plans {
@@ -49,7 +55,7 @@ class UserService {
         })
     }
 
-    static func getUserPlans(completion: ([Plan]!) -> Void) {
+    func getUserPlans(completion: ([Plan]!) -> Void) {
         if let user = currentUser() {
             getUserPlans(user, completion: completion)
         } else {
@@ -57,11 +63,11 @@ class UserService {
         }
     }
 
-    static func getUserPlans(user: FIRUser, completion: ([Plan]!) -> Void) {
+    func getUserPlans(user: FIRUser, completion: ([Plan]!) -> Void) {
         getUserPlan(user, completion: {
             userPlan in
             if let userPlan = userPlan {
-                getPlans(userPlan, completion: {
+                self.getPlans(userPlan, completion: {
                     plans in
                     completion(plans)
                 })
@@ -71,7 +77,7 @@ class UserService {
         })
     }
 
-    static func getUserPlan(completion: (UserPlan!) -> Void) {
+    func getUserPlan(completion: (UserPlan!) -> Void) {
         if let user = currentUser() {
             getUserPlan(user, completion: completion)
         } else {
@@ -79,7 +85,7 @@ class UserService {
         }
     }
 
-    static func getUserPlan(user: FIRUser, completion: (UserPlan!) -> Void) {
+    func getUserPlan(user: FIRUser, completion: (UserPlan!) -> Void) {
         databaseRef.child("user-plans").child(user.uid).observeSingleEventOfType(.Value, withBlock: {
             snapshot in
             if snapshot.exists() {
@@ -96,7 +102,7 @@ class UserService {
         })
     }
 
-    private static func getPlans(userPlan: UserPlan, completion: ([Plan]!) -> Void) {
+    private func getPlans(userPlan: UserPlan, completion: ([Plan]!) -> Void) {
         let getPlanGroup = dispatch_group_create()
         var plans = [Plan]()
         for planId in userPlan.planIds {
@@ -104,7 +110,7 @@ class UserService {
             getPlan(planId, completion: {
                 plan in
                 if let plan = plan {
-                    dispatch_barrier_async(concurrentPlanQueue) {
+                    dispatch_barrier_async(self.concurrentPlanQueue) {
                         plans.append(plan)
                     }
                 }
@@ -120,7 +126,7 @@ class UserService {
         }
     }
 
-    private static func getPlan(planId: String, completion: (Plan!) -> Void) {
+    private func getPlan(planId: String, completion: (Plan!) -> Void) {
         databaseRef.child("plans").child(planId).observeSingleEventOfType(.Value, withBlock: {
             snapshot in
             if snapshot.exists() {
@@ -142,49 +148,14 @@ class UserService {
         })
     }
 
-    private static func isValidPreference(preference: AnyObject) -> Bool {
-        return (preference.hasChild("uid") &&
-                preference.hasChild("whatItemId") &&
-                preference.hasChild("whenItemId"))
-    }
-
-    static func getCurrentPreference(completion: (Preference!) -> Void) {
-        if let user = currentUser() {
-            getCurrentPreference(user, completion: completion)
-        } else {
-            completion(nil)
-        }
-    }
-
-    static func getCurrentPreference(user: FIRUser, completion: (Preference!) -> Void) {
-        databaseRef.child("preferences").child(user.uid).observeSingleEventOfType(.Value, withBlock: {
-            snapshot in
-            if (snapshot.exists()) {
-                if let value = snapshot.value {
-                    if (isValidPreference(value)) {
-                        let uid = value["uid"] as! String
-                        let whatItemId = value["whatItemId"] as! String
-                        let whenItemId = value["whenItemId"] as! String
-                        let pref = Preference(uid: uid, whatItemId: whatItemId, whenItemId: whenItemId)
-                        completion(pref)
-                    } else {
-                        completion(nil)
-                    }
-                }
-            } else {
-                completion(nil)
-            }
-        })
-    }
-
-    static func isLoggedIn() -> Bool {
+    func isLoggedIn() -> Bool {
         if let _ = currentUser() {
             return true
         }
         return false
     }
 
-    static func currentUser() -> FIRUser? {
+    func currentUser() -> FIRUser? {
         if let user = FIRAuth.auth()?.currentUser {
             return user
         }
