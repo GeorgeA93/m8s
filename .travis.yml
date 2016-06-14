@@ -14,3 +14,5 @@ install:
   bundle install
   bundle exec pod repo update
   bundle exec pod install
+script:
+  - xctool -workspace m8s.xcworkspace -scheme m8s clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
