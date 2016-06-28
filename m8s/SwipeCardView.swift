@@ -19,7 +19,6 @@ class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         collectionView?.collectionViewLayout = layout
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        collectionView?.backgroundColor = UIColor.whiteColor()
         collectionView.registerNib(UINib(nibName: "SwipeCardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SwipeCardCollectionViewCell")
     }
     

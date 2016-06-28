@@ -19,12 +19,10 @@ class MenuHeaderView: UIView {
     }
     
     func setup() {
-        self.nameLabel!.text = "George Allen"
         
-        if let profile = FBSDKProfile.currentProfile() {
-            let s = profile.imageURLForPictureMode(FBSDKProfilePictureMode.Square, size: CGSize(width: self.profilePictureView.frame.width, height: self.profilePictureView.frame.height))
-            let data = NSData(contentsOfURL: s)
-            self.profilePictureView.image = UIImage(data: data!)
+        if UserService.shared.isLoggedIn() {
+            self.nameLabel!.text = UserService.shared.currentUser()?.displayName
+            self.profilePictureView.image = UIImage(data: NSData(contentsOfURL: (UserService.shared.currentUser()?.photoURL)!)!)
             self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.width / 2
             self.profilePictureView.clipsToBounds = true
         }

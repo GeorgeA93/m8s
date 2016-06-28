@@ -79,7 +79,10 @@ class WhereViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func doneTapped() {
        // let layout = whereCollectionView.collectionViewLayout as! ImageCollectionViewLayout
-       
+        
+        let cell = whereCollectionView.cellForItemAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! WhereCollectionViewCell
+        print(cell.selectedPin?.region)
+        
         self.performSegueWithIdentifier("doneTapped", sender: self)
     }
     

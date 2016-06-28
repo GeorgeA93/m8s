@@ -13,7 +13,7 @@ extension UIViewController {
     
     func setNavigationBarItem(title: String?) {
         self.addLeftBarButtonWithImage(UIImage(named: "hamburgerMenu")!)
-      //  self.addRightBarButtonWithImage(UIImage(named: "plansIcon")!)
+        self.addRightBarButtonWithImage(UIImage(named: "hamburgerMenu")!)
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.removeRightGestures()
         self.slideMenuController()?.addLeftGestures()

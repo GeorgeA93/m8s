@@ -15,12 +15,14 @@ class SlideMenuService {
         
         let mainViewController = storyboard.instantiateViewControllerWithIdentifier("SwipeViewController") as! SwipeViewController
         let leftViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+        let rightViewController = storyboard.instantiateViewControllerWithIdentifier("PlanMenuViewController") as! PlanMenuViewController
         
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         
         UINavigationBar.appearance().tintColor = UIColor(hex: "FFFEF2")
-        UINavigationBar.appearance().backgroundColor = UIColor(hex: "0A0609")
-        UINavigationBar.appearance().barTintColor = UIColor(hex: "0A0609")
+        UINavigationBar.appearance().backgroundColor = UIColor(hex: "141414")
+        UINavigationBar.appearance().barTintColor = UIColor(hex: "141414")
+        UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(hex: "FFFEF2")]
         
         leftViewController.mainViewController = nvc
@@ -28,7 +30,7 @@ class SlideMenuService {
         SlideMenuOptions.leftBezelWidth = 60
         SlideMenuOptions.contentViewScale = 1
         
-        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
+        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
         slideMenuController.delegate = mainViewController
         

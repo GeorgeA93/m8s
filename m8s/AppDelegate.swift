@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         StorageService.loadItemsFromStorage()
         
+        globalStyles(application)
+        
         return true
     }
     
@@ -53,7 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         StorageService.destroy()
         UserService.shared.destroy()
     }
-
+    
+    func globalStyles(application: UIApplication){
+        
+    }
 
 }
 

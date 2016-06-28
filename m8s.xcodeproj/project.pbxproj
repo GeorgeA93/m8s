@@ -56,6 +56,8 @@
 		B9B51D301CEF8775005350ED /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B51D2F1CEF8775005350ED /* Subscription.swift */; };
 		B9BE4E3A1CFF595D006E3135 /* UserPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE4E391CFF595D006E3135 /* UserPlan.swift */; };
 		B9DEFED01CB16A210068A356 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEFECF1CB16A210068A356 /* MenuViewController.swift */; };
+		B9EDB6C81D22E79E006E52E0 /* PlanMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EDB6C71D22E79E006E52E0 /* PlanMenuViewController.swift */; };
+		B9EDB6CA1D22E9BD006E52E0 /* PlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EDB6C91D22E9BD006E52E0 /* PlansViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +135,8 @@
 		B9B51D2F1CEF8775005350ED /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		B9BE4E391CFF595D006E3135 /* UserPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPlan.swift; sourceTree = "<group>"; };
 		B9DEFECF1CB16A210068A356 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		B9EDB6C71D22E79E006E52E0 /* PlanMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanMenuViewController.swift; sourceTree = "<group>"; };
+		B9EDB6C91D22E9BD006E52E0 /* PlansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansViewController.swift; sourceTree = "<group>"; };
 		D3A3B11D62372898AA098C59 /* Pods-m8s.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-m8s.debug.xcconfig"; path = "Pods/Target Support Files/Pods-m8s/Pods-m8s.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -299,6 +303,8 @@
 				B977BC1F1CBAD44200263F23 /* WhereViewController.swift */,
 				B977BC211CBAD4AA00263F23 /* InviteFriendsViewController.swift */,
 				B967FEA71CC3E43800C49707 /* LocationSearchTableViewController.swift */,
+				B9EDB6C71D22E79E006E52E0 /* PlanMenuViewController.swift */,
+				B9EDB6C91D22E9BD006E52E0 /* PlansViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -596,6 +602,7 @@
 				B92A918B1CF61E1D00766340 /* WhenItem.swift in Sources */,
 				B9DEFED01CB16A210068A356 /* MenuViewController.swift in Sources */,
 				B992F9D81D00B6FB00EFAA2C /* NSDateExtensions.swift in Sources */,
+				B9EDB6C81D22E79E006E52E0 /* PlanMenuViewController.swift in Sources */,
 				B98ACE371CCFF3EF000A778C /* SwipeCardCollectionViewCell.swift in Sources */,
 				B977BC0B1CBAA3BF00263F23 /* UIViewControllerExtensions.swift in Sources */,
 				B977BC121CBAA4FB00263F23 /* UIColorExtensions.swift in Sources */,
@@ -606,6 +613,7 @@
 				B969D1FC1CB597C400A4ABD6 /* ImageCollectionViewCell.swift in Sources */,
 				B92A91911CF61EF700766340 /* Plan.swift in Sources */,
 				B99A66971CBD6679006AB0F5 /* MenuHeaderView.swift in Sources */,
+				B9EDB6CA1D22E9BD006E52E0 /* PlansViewController.swift in Sources */,
 				B972E1531CAC50B30004F3DC /* WhenCollectionViewCell.swift in Sources */,
 				B992F9DA1D00B99400EFAA2C /* ArrayExtensions.swift in Sources */,
 				B972E1231CAC50630004F3DC /* AppDelegate.swift in Sources */,

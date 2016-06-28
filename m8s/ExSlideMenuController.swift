@@ -16,6 +16,7 @@ class ExSlideMenuController : SlideMenuController {
             if vc is SwipeViewController ||
                 vc is AboutViewController ||
                 vc is SettingsViewController ||
+                vc is PlansViewController ||
                 vc is WhenViewController {
                 return true
             }
