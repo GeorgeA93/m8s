@@ -13,6 +13,7 @@ target 'm8s' do
   pod "Firebase/Auth"
   pod "Firebase/Database"
   pod "Firebase/Storage"
+  pod 'FontAwesome.swift'
 
 end
 

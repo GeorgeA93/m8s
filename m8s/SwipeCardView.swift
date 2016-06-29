@@ -8,6 +8,7 @@
 
 import UIKit
 import FMMosaicLayout
+import FontAwesome_swift
 
 class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, FMMosaicLayoutDelegate {
 
@@ -15,6 +16,7 @@ class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     @IBOutlet weak var whatLabel: UILabel!
     @IBOutlet weak var whenLabel: UILabel!
     @IBOutlet weak var whereLabel: UILabel!
+    @IBOutlet weak var mapButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +29,10 @@ class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         whatLabel?.text = "DRINKS"
         whenLabel?.text = "TOMORROW"
         whereLabel?.text = "ANYWHERE"
+        
+        mapButton.titleLabel?.font = UIFont.fontAwesomeOfSize(30)
+        mapButton.titleLabel?.textColor = ColourService.shared.DarkBlack
+        mapButton.setTitle(String.fontAwesomeIconWithName(FontAwesome.MapMarker), forState: .Normal)
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -35,7 +41,7 @@ class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return 250
-        return 73
+        return 16
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -46,7 +52,7 @@ class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: FMMosaicLayout!, numberOfColumnsInSection section: Int) -> Int {
         //return 10
-        return 10
+        return 4
     }
     
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: FMMosaicLayout!, mosaicCellSizeForItemAtIndexPath indexPath: NSIndexPath!) -> FMMosaicCellSize {
