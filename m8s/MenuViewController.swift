@@ -27,7 +27,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     var preferencesViewController: UIViewController!
     var settingsViewController: UIViewController!
     var aboutViewController: UIViewController!
-    var menus = ["Home", "Preferences", "Settings", "About"];
+    var menus = ["HOME", "PREFERENCES", "SETTINGS", "ABOUT"];
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.menuTableView.delegate = self
         self.menuTableView.dataSource = self
+        
+        self.menuTableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,7 +83,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier("MenuTableViewCell", forIndexPath: indexPath)
 
         cell.textLabel!.text = menus[indexPath.row]
-
+        cell.textLabel!.textColor = ColourService.shared.LightWhite
+        
         return cell
     }
     

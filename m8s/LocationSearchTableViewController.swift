@@ -17,6 +17,10 @@ class LocationSearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView!.tableFooterView = UIView()
+        self.tableView!.backgroundColor = ColourService.shared.DarkBlack
+        self.tableView!.separatorColor = ColourService.shared.DarkWhite
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -64,9 +68,12 @@ class LocationSearchTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LocationSearchTableViewCell")!
+        cell.backgroundColor = ColourService.shared.DarkBlack
         let selectedItem = matchingItems[indexPath.row].placemark
         cell.textLabel?.text = selectedItem.name
+        cell.textLabel?.textColor = ColourService.shared.LightWhite
         cell.detailTextLabel?.text = parseAddress(selectedItem)
+        cell.detailTextLabel?.textColor = ColourService.shared.LightWhite
         return cell
     }
     

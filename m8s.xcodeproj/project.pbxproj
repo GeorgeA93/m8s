@@ -14,6 +14,7 @@
 		B92A918D1CF61E2500766340 /* WhereItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A918C1CF61E2500766340 /* WhereItem.swift */; };
 		B92A91911CF61EF700766340 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A91901CF61EF700766340 /* Plan.swift */; };
 		B92A91931CF62CBC00766340 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A91921CF62CBC00766340 /* UserService.swift */; };
+		B92E0A161D24354200AEBBBD /* ColourService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E0A151D24354200AEBBBD /* ColourService.swift */; };
 		B94F35411CC039490049DEA6 /* WhatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F35401CC039490049DEA6 /* WhatCollectionViewCell.swift */; };
 		B967FEA81CC3E43800C49707 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B967FEA71CC3E43800C49707 /* LocationSearchTableViewController.swift */; };
 		B967FEAA1CC401EA00C49707 /* WhereCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B967FEA91CC401EA00C49707 /* WhereCollectionViewCell.swift */; };
@@ -86,6 +87,7 @@
 		B92A918C1CF61E2500766340 /* WhereItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereItem.swift; sourceTree = "<group>"; };
 		B92A91901CF61EF700766340 /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		B92A91921CF62CBC00766340 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		B92E0A151D24354200AEBBBD /* ColourService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourService.swift; sourceTree = "<group>"; };
 		B94F35401CC039490049DEA6 /* WhatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatCollectionViewCell.swift; sourceTree = "<group>"; };
 		B967FEA71CC3E43800C49707 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		B967FEA91CC401EA00C49707 /* WhereCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				B9B51D2B1CEF804E005350ED /* StorageService.swift */,
 				B92A91921CF62CBC00766340 /* UserService.swift */,
 				B910C31B1CF77E240059C7F4 /* SlideMenuService.swift */,
+				B92E0A151D24354200AEBBBD /* ColourService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				B92A91931CF62CBC00766340 /* UserService.swift in Sources */,
 				B977BC1A1CBAD05F00263F23 /* SettingsViewController.swift in Sources */,
 				B98ACE301CCFF0F1000A778C /* SwipeCardView.swift in Sources */,
+				B92E0A161D24354200AEBBBD /* ColourService.swift in Sources */,
 				B977BC101CBAA4BD00263F23 /* UIApplicationExtensions.swift in Sources */,
 				B98ACE2C1CCFEE0C000A778C /* SwipingOverlayView.swift in Sources */,
 				B977BC221CBAD4AA00263F23 /* InviteFriendsViewController.swift in Sources */,

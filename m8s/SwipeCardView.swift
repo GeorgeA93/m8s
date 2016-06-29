@@ -12,6 +12,9 @@ import FMMosaicLayout
 class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, FMMosaicLayoutDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var whatLabel: UILabel!
+    @IBOutlet weak var whenLabel: UILabel!
+    @IBOutlet weak var whereLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +23,10 @@ class SwipeCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         collectionView?.dataSource = self
         collectionView?.delegate = self
         collectionView.registerNib(UINib(nibName: "SwipeCardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SwipeCardCollectionViewCell")
+        
+        whatLabel?.text = "DRINKS"
+        whenLabel?.text = "TOMORROW"
+        whereLabel?.text = "ANYWHERE"
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

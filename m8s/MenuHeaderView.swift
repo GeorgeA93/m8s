@@ -21,7 +21,7 @@ class MenuHeaderView: UIView {
     func setup() {
         
         if UserService.shared.isLoggedIn() {
-            self.nameLabel!.text = UserService.shared.currentUser()?.displayName
+            self.nameLabel!.text = UserService.shared.currentUser()?.displayName?.uppercaseString
             self.profilePictureView.image = UIImage(data: NSData(contentsOfURL: (UserService.shared.currentUser()?.photoURL)!)!)
             self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.width / 2
             self.profilePictureView.clipsToBounds = true

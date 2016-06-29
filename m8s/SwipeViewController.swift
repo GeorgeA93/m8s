@@ -86,6 +86,10 @@ extension SwipeViewController: KolodaViewDelegate {
     func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt) {
        // UIApplication.sharedApplication().openURL(NSURL(string: "http://yalantis.com/")!)
     }
+    
+    func kolodaShouldTransparentizeNextCard(koloda: KolodaView) -> Bool {
+        return false
+    }
 }
 
 //MARK: KolodaViewDataSource
@@ -96,8 +100,10 @@ extension SwipeViewController: KolodaViewDataSource {
     }
     
     func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
-        return (NSBundle.mainBundle().loadNibNamed("SwipeCardView",
+        let view = (NSBundle.mainBundle().loadNibNamed("SwipeCardView",
             owner: self, options: nil)[0] as? SwipeCardView)!
+        view.layer.cornerRadius = 100
+        return view
     }
     
     func koloda(koloda: KolodaView, viewForCardOverlayAtIndex index: UInt) -> OverlayView? {

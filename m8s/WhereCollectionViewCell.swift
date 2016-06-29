@@ -62,6 +62,8 @@ class WhereCollectionViewCell: ImageCollectionViewCell {
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
+        searchBar.barTintColor = ColourService.shared.DarkBlack
+        searchBar.tintColor = ColourService.shared.LightWhite
         //add the map to the view
         mapView.addSubview(searchBar)
         resultSearchController?.hidesNavigationBarDuringPresentation = false

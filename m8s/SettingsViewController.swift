@@ -13,13 +13,14 @@ import FirebaseAuth
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var settingsTableView: UITableView!
-     var menuItems = ["Delete Account", "Log Out"];
+     var menuItems = ["DELETE ACCOUNT", "LOG OUT"];
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
+        settingsTableView.tableFooterView = UIView()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -47,6 +48,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SettingsTableViewCell", forIndexPath: indexPath)
         cell.textLabel!.text = menuItems[indexPath.row]
+        cell.textLabel!.textColor = ColourService.shared.LightWhite
         return cell
     }
     

@@ -19,11 +19,11 @@ class SlideMenuService {
         
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         
-        UINavigationBar.appearance().tintColor = UIColor(hex: "FFFEF2")
-        UINavigationBar.appearance().backgroundColor = UIColor(hex: "141414")
-        UINavigationBar.appearance().barTintColor = UIColor(hex: "141414")
+        UINavigationBar.appearance().tintColor = ColourService.shared.LightWhite
+        UINavigationBar.appearance().backgroundColor = ColourService.shared.LightBlack
+        UINavigationBar.appearance().barTintColor = ColourService.shared.LightBlack
         UINavigationBar.appearance().translucent = false
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(hex: "FFFEF2")]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: ColourService.shared.LightWhite]
         
         leftViewController.mainViewController = nvc
         
